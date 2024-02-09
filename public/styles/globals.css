@@ -1,0 +1,11 @@
+:root{
+  --font-family: 'Inter', sans-serif; /* Font family */
+  --primary-color: #000000; /* Primary color */
+  --secondary-color: #6c757d; /* Secondary color */
+  --background-color: #f8f9fa; /* Background color */
+  --text-color: #343a40; /* Text color */
+  --border-radius: 0.25rem; /* Border radius */
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+  --transition-duration: 0.3s; /* Transition duration */
+  --font-weight: 700;
+}

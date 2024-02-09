@@ -1,0 +1,18 @@
+.main {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 50vh;
+}
+
+.h1Div{
+  width: 440px;
+  Height: 48px;
+  text-align: center;
+}
+
+.h1{
+  color: var(--primary-color);
+  font-weight: var(--font-weight);
+}
+
