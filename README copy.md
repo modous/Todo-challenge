@@ -1,7 +1,3 @@
-# Todo-challenge
-Maak een takenbeheersysteem waar de gebruiker taken kan toevoegen, bewerken, voltooien en verwijderen. Het moet ook de taken weergeven die de gebruiker heeft toegevoegd.
-
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
