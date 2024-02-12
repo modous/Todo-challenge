@@ -1,6 +1,5 @@
-import Image from "next/image";
-import styles from "./index.module.css";
-import Layout from "../components/Layout";
+import styles from "./page.module.css";
+import Layout from "./layout";
 
 
 export default function Home() {

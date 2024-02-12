@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import styles from "./page.module.css";
 import { Inter } from "next/font/google";
 
 
@@ -10,7 +11,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={inter.className}>{children}</div>
+    <html lang="en">
+    <body>
+      {children}
+    </body>
+  </html>
   );
 }
 
