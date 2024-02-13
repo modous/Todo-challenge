@@ -21,13 +21,11 @@ export default async function Home() {
   const data = await getData();
 
   return (
-    <Layout>
       <main className={styles.main}>
         <section className={styles.todoSection}>
           <h1 className={styles.h1}>Todo list</h1>
           <List data={data} />
         </section>
       </main>
-    </Layout>
   );
 }
