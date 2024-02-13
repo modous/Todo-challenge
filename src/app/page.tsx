@@ -25,6 +25,11 @@ export default async function Home() {
       <main className={styles.main}>
         <section className={styles.h1Div}>
           <h1 className={styles.h1}>Todo list</h1>
+          <ul>
+            {data.map((item: { id: React.Key | null | undefined; title: string | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }) => (
+              <li key={item.id}>{item.title}</li>
+            ))}
+          </ul>
         </section>
       </main>
     </Layout>
