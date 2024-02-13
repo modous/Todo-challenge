@@ -21,11 +21,12 @@ const List: React.FC<ListProps> = ({ data }) => {
   }
 
   return (
-    <ul className={Styles.li}>
+    <ul className={Styles.ul}>
       {data.map((item) => (
         <li className={Styles.border} key={item.id}>
           {item.title}
-        </li>
+          
+        </li> 
       ))}
     </ul>
   );
