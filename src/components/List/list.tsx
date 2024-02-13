@@ -1,16 +1,17 @@
 import React from "react";
 import Styles from "./list.module.css";
 
+
 type TodoItem = {
   id: string;
   title: string;
 };
 
-type ListProps = {
+interface ListProps {
   data: TodoItem[];
 };
 
-const List: React.FC<ListProps> = ({ data }) => {
+function List({data}: ListProps){
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
   if (data.length === 0) {
     return (
