@@ -1,11 +1,7 @@
 import React from "react";
 import Styles from "./list.module.css";
+import { TodoItem } from "../../types/type";
 
-
-type TodoItem = {
-  id: string;
-  title: string;
-};
 
 interface ListProps {
   data: TodoItem[];
