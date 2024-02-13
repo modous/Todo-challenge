@@ -10,3 +10,8 @@
     gap:25px;
     border-bottom: 0.1px solid gray; /* Add border bottom */
 }
+
+
+.emptyState{
+    color: gray;
+}
