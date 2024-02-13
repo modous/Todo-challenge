@@ -2,6 +2,7 @@
 import Layout from "./layout";
 import React from "react";
 import styles from "./page.module.css";
+import List from "../components/List/list";
 
 async function getData() {
   const res = await fetch(
@@ -23,13 +24,9 @@ export default async function Home() {
   return (
     <Layout>
       <main className={styles.main}>
-        <section className={styles.h1Div}>
+        <section className={styles.todoSection}>
           <h1 className={styles.h1}>Todo list</h1>
-          <ul>
-            {data.map((item: { id: React.Key | null | undefined; title: string | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }) => (
-              <li key={item.id}>{item.title}</li>
-            ))}
-          </ul>
+          <List data={data} />
         </section>
       </main>
     </Layout>

@@ -5,15 +5,16 @@
   height: 50vh;
 }
 
-.h1Div{
+.todoSection{
   width: 440px;
   Height: 48px;
-  text-align: center;
+
 }
 
 .h1{
-  color: var(--primary-color);
-  font-weight: var(--font-weight);
-  
+  font-weight: var(--font-weight); /* Set font weight to 700 */
+  font-size: var(--font-size); /* Set font size to 40px */
+  line-height: var(--font-height); /* Set line height to 48.41px */
+  text-align: center;
 }
 

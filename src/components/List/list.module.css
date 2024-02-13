@@ -1,0 +1,12 @@
+.li {
+    text-decoration: none;
+    list-style-type: none;
+    gap: 24px;
+}
+
+
+
+.border{
+    gap:25px;
+    border-bottom: 0.1px solid gray; /* Add border bottom */
+}

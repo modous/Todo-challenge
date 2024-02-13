@@ -7,5 +7,8 @@
   --border-radius: 0.25rem; /* Border radius */
   --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
   --transition-duration: 0.3s; /* Transition duration */
-  --font-weight: 700;
+  --font-weight: 700;/* Set font weight to 700 */
+  --font-size: 40px;/* Set font size to 40px */
+  --line-height: 48.41px; /* Set line height to 48.41px */
+
 }
