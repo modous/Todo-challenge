@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./page.module.css";
 import List from "../components/List/list";
 
+
 async function getData() {
   const result = await fetch(
     "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/"

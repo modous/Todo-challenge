@@ -4,10 +4,6 @@
     
 }
 
-
-
-
-
 .border{
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -26,3 +22,36 @@
 .emptyState{
     color: gray;
 }
+
+/* Badge */
+.badge{
+    color: blue;
+}
+
+
+/* Checkbox */
+
+.customCheckbox {
+    display: none; /* Hide the default checkbox */
+  }
+  
+  .customCheckbox + label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .custom-checkbox + label:before {
+    content: "";
+    display: inline-block;
+    width: 16px; /* Adjust width as needed */
+    height: 16px; /* Adjust height as needed */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z' clip-rule='evenodd' /%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+    margin-right: 8px; /* Adjust spacing between icon and label text */
+  }
+  
+  .custom-checkbox:checked + label:before {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z' clip-rule='evenodd' /%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+  }
