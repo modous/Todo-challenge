@@ -1,26 +1,30 @@
-'use client'
- 
+"use client";
 
 import React, { useState } from "react";
-
+import Style from "./checkbox.module.css";
 
 interface CheckboxProps {
-    label: string;
-    
-  }
+  label: string;
+}
 
 export const Checkbox = ({ label }: CheckboxProps) => {
-    const [isChecked, setIsChecked] = useState(false);
-    return (
-        <div className="checkbox-wrapper">
-        <label>
-            <input
-                type="checkbox"
-                onChange={() => setIsChecked(prev => !prev)}
-            />
-            {label}
-        </label>
-        <p>{isChecked ? "Completed" : ""}</p>
-    </div>
-    );
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = () => {
+    setIsChecked((prev) => !prev);
   };
+  const checkboxClass = isChecked ? Style.checked : Style.checkbox;
+
+  return (
+    <div>
+      <label>
+        <input
+          className={Style.checkbox}
+          type="checkbox"
+          onChange={handleChange}
+        />
+        {label}
+      </label>
+    </div>
+  );
+};
