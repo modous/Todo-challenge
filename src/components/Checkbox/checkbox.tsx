@@ -17,14 +17,12 @@ export const Checkbox = ({ label }: CheckboxProps) => {
 
   return (
     <div>
-      <label>
-        <input
-           className={checkboxClass}
-          type="checkbox"
-          onChange={handleChange}
-        />
-        {label}
-      </label>
+      <input
+        className={checkboxClass}
+        type="checkbox"
+        onChange={handleChange}
+      />
+      {label}
     </div>
   );
 };

@@ -11,7 +11,7 @@
   border: 0.15em solid #585e5e;
   outline: none;
   cursor: pointer;
-  
+  margin-right: 20px;
 }
 
 .checked {
@@ -27,7 +27,7 @@
     border: 0.15em solid #585e5e;
     outline: none;
     cursor: pointer;
-    
+    margin-right: 20px;
   }
   
   .checkbox:hover{
