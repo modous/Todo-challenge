@@ -1,15 +1,15 @@
-// import React from "react";
-// import Styles from "./list.module.css";
-// import { TodoItem } from "../../types/type";
-// import { Checkbox } from "../Checkbox/checkbox";
+import React from "react";
+import Styles from "./list.module.css";
+import { TodoItem } from "../../types/type";
+import { Checkbox } from "../Checkbox/checkbox";
 
-// interface TodoListItemProps {
-//     item: TodoItem;
-//     onCheckboxClick: (id: string) => void;
-//   }
+interface TodoItemProps {
+    item: TodoItem;
+    onCheckboxClick: (id: string) => void;
+  }
 
 
-//   export default function Todolistitem({ item }: TodoListItemProps) {
+//   export default function Todoitem({ item }: TodoItemProps) {
 //     // Handle checkbox click to toggle completion
   
 //     //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
