@@ -18,8 +18,8 @@
 
 .border:hover{
     background-color: var(--background-color);
-    transform: scale(1.01); /* Increase scale on hover */
-    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+    transform: scale(1.01); 
+    transition: transform 0.3s ease;
 }
 
 

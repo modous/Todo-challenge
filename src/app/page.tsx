@@ -1,4 +1,3 @@
-import Layout from "./layout";
 import React from "react";
 import styles from "./page.module.css";
 import List from "../components/List/list";

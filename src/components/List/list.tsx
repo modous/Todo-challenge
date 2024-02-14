@@ -2,12 +2,11 @@ import React from "react";
 import Styles from "./list.module.css";
 import { TodoItem } from "../../types/type";
 
-
 interface ListProps {
   data: TodoItem[];
-};
+}
 
-function List({data}: ListProps){
+export default function List({ data }: ListProps) {
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
   if (data.length === 0) {
     return (
@@ -22,11 +21,8 @@ function List({data}: ListProps){
       {data.map((item) => (
         <li className={Styles.border} key={item.id}>
           {item.title}
-          
-        </li> 
+        </li>
       ))}
     </ul>
   );
-};
-
-export default List;
+}
