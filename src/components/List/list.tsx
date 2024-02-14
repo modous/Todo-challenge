@@ -1,10 +1,11 @@
 import React from "react";
 import Styles from "./list.module.css";
-import { TodoItem } from "../../types/type";
-import { Checkbox } from "../Checkbox/checkbox";
+import { TodoItem } from "../Todoitem/TodoItem";
+
+
 
 interface ListProps {
-  data: TodoItem[];
+  data: ITodoItem[];
   
 }
 
@@ -22,10 +23,8 @@ export default function List({ data }: ListProps) {
 
   return (
     <ul className={Styles.ul}>
-      {data.map((item) => (
-        <li className={Styles.border} key={item.id}>
-          <Checkbox label={item.title} />
-        </li>
+      {data.map((item) => (      
+        <TodoItem item={item} key={item.id}/>
       ))}
     </ul>
   );
