@@ -4,6 +4,8 @@
     padding: 20px;
     border-radius: 10px;
     margin: 5px;
+    display: flex;
+    flex-direction: row;
 }
 
 .border:hover{

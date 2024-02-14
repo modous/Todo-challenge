@@ -1,6 +1,7 @@
 import React from "react";
 import Styles from "./list.module.css";
-import { TodoItem } from "../Todoitem/TodoItem";
+import TodoItem from "../TodoListItem/TodoListItem";
+
 
 
 
@@ -24,8 +25,11 @@ export default function List({ data }: ListProps) {
   return (
     <ul className={Styles.ul}>
       {data.map((item) => (      
-        <TodoItem item={item} key={item.id}/>
+        <TodoItem item={item} key={item.id} >
+         {item.title}
+        </TodoItem>
       ))}
     </ul>
   );
 }
+

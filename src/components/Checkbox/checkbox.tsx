@@ -3,11 +3,8 @@
 import React, { useState } from "react";
 import Style from "./checkbox.module.css";
 
-interface CheckboxProps {
-  label: string;
-}
 
-export const Checkbox = ({ label }: CheckboxProps) => {
+export default function Checkbox() {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = () => {
@@ -22,7 +19,8 @@ export const Checkbox = ({ label }: CheckboxProps) => {
         type="checkbox"
         onChange={handleChange}
       />
-      {label}
     </div>
   );
 };
+
+
