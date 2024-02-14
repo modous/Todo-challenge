@@ -19,7 +19,7 @@ export const Checkbox = ({ label }: CheckboxProps) => {
     <div>
       <label>
         <input
-          className={Style.checkbox}
+           className={checkboxClass}
           type="checkbox"
           onChange={handleChange}
         />
