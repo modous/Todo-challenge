@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "./todolistitem.module.css";
 import Thrash from "../Thrash/Thrash";
-import Checkbox from "../Checkbox/checkbox";
+import Checkbox from "../Checkbox/Checkbox";
 
 
 interface TodoItemProps {

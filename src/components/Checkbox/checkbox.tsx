@@ -8,20 +8,17 @@ interface CheckboxProps {
   onChange: () => void;
 }
 
-export default function Checkbox() {
-  const [isChecked, setIsChecked] = useState(false);
+export default function Checkbox({checked, onChange}:CheckboxProps) {
+ 
 
-  const handleChange = () => {
-    setIsChecked((prev) => !prev);
-  };
-  const checkboxClass = isChecked ? Style.checked : Style.checkbox;
+  const checkboxClass = checked ? Style.checked : Style.checkbox;
 
   return (
     <div>
       <input
         className={checkboxClass}
         type="checkbox"
-        onChange={handleChange}
+        onChange={onChange}
       />
     </div>
   );
