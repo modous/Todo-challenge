@@ -1,13 +1,17 @@
 import React from "react";
-import Styles from "./list.module.css";
-import { TodoItem } from "../../types/type";
+import Styles from "./List.module.css";
+import TodoItem from "../TodoListItem/TodoListItem";
+
+
 
 
 interface ListProps {
-  data: TodoItem[];
-};
+  data: ITodoItem[];
+}
 
-function List({data}: ListProps){
+export default function List({ data }: ListProps) {
+  // Handle checkbox click to toggle completion
+
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
   if (data.length === 0) {
     return (
@@ -19,14 +23,12 @@ function List({data}: ListProps){
 
   return (
     <ul className={Styles.ul}>
-      {data.map((item) => (
-        <li className={Styles.border} key={item.id}>
-          {item.title}
-          
-        </li> 
+      {data.map((item) => (      
+        <TodoItem item={item} key={item.id} >
+         {item.title}
+        </TodoItem>
       ))}
     </ul>
   );
-};
+}
 
-export default List;

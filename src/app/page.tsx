@@ -1,7 +1,7 @@
-import Layout from "./layout";
 import React from "react";
 import styles from "./page.module.css";
-import List from "../components/List/list";
+import List from "../components/List/List";
+
 
 async function getData() {
   const result = await fetch(

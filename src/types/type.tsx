@@ -1,5 +1,5 @@
-export type TodoItem = {
-    id: string;
-    title: string;
-  };
-  
+interface ITodoItem {
+  id: number;
+  title: string;
+  completed: boolean;
+}
