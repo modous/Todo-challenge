@@ -1,25 +1,30 @@
-'use client'
- 
+"use client";
 
 import React, { useState } from "react";
-
+import Style from "./Checkbox.module.css";
 
 interface CheckboxProps {
-    label: string;
-    
-  }
+  checked: boolean;
+  onChange: () => void;
+}
 
-export default function Checkbox({checked, onChange}: CheckboxProps) {
+export default function Checkbox() {
+  const [isChecked, setIsChecked] = useState(false);
 
-  const checkboxClass = checked ? Style.checked : Style.checkbox;
+  const handleChange = () => {
+    setIsChecked((prev) => !prev);
+  };
+  const checkboxClass = isChecked ? Style.checked : Style.checkbox;
 
   return (
     <div>
       <input
         className={checkboxClass}
         type="checkbox"
-        onChange={onChange}
+        onChange={handleChange}
       />
     </div>
-    );
-  };
+  );
+};
+
+
