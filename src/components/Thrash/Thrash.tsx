@@ -3,16 +3,11 @@
 import React from "react";
 import Styles from "./thrash.module.css";
 
-interface ButtonProps {
-  checked: boolean;
-  onChange: () => void;
-}
 
-export default function Button() {
-  
+export default function Thrash() {
   
   return (
-    <div className={Styles.div}>
+    <div className={Styles.border}>
         <button className={Styles.button} type="button"></button>
     </div>
   );
