@@ -7,7 +7,6 @@ import TodoItem from "../TodoListItem/TodoListItem";
 
 interface ListProps {
   data: ITodoItem[];
-  
 }
 
 export default function List({ data }: ListProps) {

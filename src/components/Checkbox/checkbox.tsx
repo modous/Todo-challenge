@@ -3,6 +3,10 @@
 import React, { useState } from "react";
 import Style from "./checkbox.module.css";
 
+interface CheckboxProps {
+  checked: boolean;
+  onChange: () => void;
+}
 
 export default function Checkbox() {
   const [isChecked, setIsChecked] = useState(false);

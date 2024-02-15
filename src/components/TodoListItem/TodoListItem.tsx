@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from "./todolistitem.module.css";
-import Checkbox from "../Checkbox/Checkbox";
+import Checkbox from "../Checkbox/checkbox";
 
 
 interface TodoItemProps {
@@ -8,11 +8,17 @@ interface TodoItemProps {
   children: React.ReactNode;
 }
 
-export default function TodoItem({ children }: TodoItemProps) {
+export default function TodoItem({
+  item,
+  children,
+}: TodoItemProps) {
+
+
   return (
     <li className={Styles.border}>
       <Checkbox />
-      {children}
+       <span className={item.completed ? Styles.completed : ""}>{children}</span>
+      
     </li>
   );
 }
