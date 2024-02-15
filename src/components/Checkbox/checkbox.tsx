@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Style from "./checkbox.module.css";
+import Style from "./Checkbox.module.css";
 
 interface CheckboxProps {
   checked: boolean;

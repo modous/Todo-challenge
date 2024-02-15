@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./list.module.css";
+import Styles from "./List.module.css";
 import TodoItem from "../TodoListItem/TodoListItem";
 
 
