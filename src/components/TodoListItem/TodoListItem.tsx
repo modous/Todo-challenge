@@ -3,7 +3,6 @@ import Styles from "./todolistitem.module.css";
 import Thrash from "../Thrash/Thrash";
 import Checkbox from "../Checkbox/Checkbox";
 
-
 interface TodoItemProps {
   item: ITodoItem;
   children: React.ReactNode;
@@ -11,8 +10,8 @@ interface TodoItemProps {
 
 export default function TodoItem({ item, children }: TodoItemProps) {
   return (
-    <li className={Styles.border}>
-      <Checkbox />
+    <li className={Styles.liBox}>
+      <Checkbox checked={item.completed} />
       <span className={item.completed ? Styles.completed : ""}>{children}</span>
       <Thrash />
     </li>

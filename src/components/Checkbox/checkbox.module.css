@@ -7,11 +7,12 @@
   appearance: none;
   width: 1.6em;
   height: 1.6em;
-  border-radius: 6px; 
+  border-radius: 8px; 
   border: 0.15em solid var(--secondary-color);
   outline: none;
   cursor: pointer;
   margin-right: 20px;
+  margin-bottom: 0;
 }
 
   .checkbox:hover{

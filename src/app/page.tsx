@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
-import List from "../components/List/List";
-
+import List from "../components/List/TodoList";
 
 async function getData() {
   const result = await fetch(
@@ -17,15 +16,16 @@ async function getData() {
 
   return result.json();
 }
+
 export default async function Home() {
   const data = await getData();
 
   return (
-      <main className={styles.main}>
-        <section className={styles.todoSection}>
-          <h1 className={styles.h1}>Todo list</h1>
-          <List data={data} />
-        </section>
-      </main>
+    <main className={styles.main}>
+      <section className={styles.todoSection}>
+        <h1 className={styles.h1}>Todo list</h1>
+        <List data={data} />
+      </section>
+    </main>
   );
 }

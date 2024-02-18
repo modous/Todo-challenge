@@ -1,16 +1,21 @@
-.border{
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 5px;
-    display: flex;
-    flex-direction: row;
-    
+.liBox {
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
 }
 
-.border:hover{
-    background-color: var(--background-color);
-    transform: scale(1.01); 
-    transition: transform 0.3s ease;
+.liBox:hover {
+  background-color: var(--background-color);
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
+}
+
+.completed {
+  text-decoration: line-through;
 }
