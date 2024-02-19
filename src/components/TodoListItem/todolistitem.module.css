@@ -22,6 +22,14 @@
   border-radius: 10px;
 }
 
+.divBox {
+  display: none;
+}
+
+.liBox:hover .divBox {
+  display: block;
+}
+
 .completed {
   text-decoration: line-through;
 }

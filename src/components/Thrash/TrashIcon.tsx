@@ -1,12 +1,8 @@
 "use client";
 
 import React from "react";
-import Styles from "./TrashIcon.module.css";
+import styles from "./TrashIcon.module.css";
 
 export default function Thrash() {
-  return (
-    <div className={Styles.divBox}>
-      <button className={Styles.button} type="button"></button>
-    </div>
-  );
+  return <button className={styles.button} type="button"></button>;
 }

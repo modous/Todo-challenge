@@ -14,9 +14,7 @@ interface TodoItemProps {
 
 export default function TodoItem({ item, children }: TodoItemProps) {
   const [isChecked, setIsChecked] = useState(item.completed);
-  const [isHovering, setIsHovering] = useState(false);
 
-  console.log(isChecked);
   return (
     <li className={styles.liBox}>
       <Checkbox checked={isChecked} onChange={setIsChecked} />
@@ -30,16 +28,9 @@ export default function TodoItem({ item, children }: TodoItemProps) {
         {children}
       </span>
 
-      {/* <span className={isChecked ? Styles.completed : ""} style={{ flex: 1 }}>
-        {children}
-      </span> */}
-      <TrashIcon
-      // className={isHovering ? styles.divBox : styles.hidden}
-      // onChange={setIsHovering}
-      />
-
-      {/* 3. CSS method css modules */}
-      {/* <i className={isHovering ? Styles.visible : Styles.hidden}>🗑️</i> */}
+      <div className={styles.divBox}>
+        <TrashIcon />
+      </div>
     </li>
   );
 }

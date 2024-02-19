@@ -1,11 +1,7 @@
-@import "../TodoListItem/todolistitem.module.css";
-
 /* Button */
 .button {
-  /* display: none; */
   width: 32px;
   height: 32px;
-  /* padding: 8px; */
   border-radius: 8px;
   border: 1px;
   cursor: pointer;
@@ -18,10 +14,6 @@
   border-color: #ffffff;
   display: grid;
   border: none;
-}
-
-.divBox:hover .button {
-  display: block;
 }
 
 .button:hover {
