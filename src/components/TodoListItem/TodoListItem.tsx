@@ -1,7 +1,10 @@
-import React from "react";
-import Styles from "./todolistitem.module.css";
-import Thrash from "../Thrash/Thrash";
+"use client";
+
+import React, { useState } from "react";
+import Styles from "./TodoListItem.module.css";
+import TrashIcon from "../Thrash/TrashIcon";
 import Checkbox from "../Checkbox/Checkbox";
+import { useHover } from "@uidotdev/usehooks";
 
 interface TodoItemProps {
   item: ITodoItem;
@@ -9,11 +12,20 @@ interface TodoItemProps {
 }
 
 export default function TodoItem({ item, children }: TodoItemProps) {
+  const [isChecked, setIsChecked] = useState(item.completed);
+  // const [isHovering, setIsHovering] = useState(false);
+
+  console.log(isChecked);
   return (
     <li className={Styles.liBox}>
-      <Checkbox checked={item.completed} />
-      <span className={item.completed ? Styles.completed : ""}>{children}</span>
-      <Thrash />
+      <Checkbox checked={isChecked} onChange={setIsChecked} />
+
+      <span className={isChecked ? Styles.completed : ""}>{children}</span>
+
+      {/* <TrashIcon className={isHovering ? Styles.liBox : Styles.hidden} /> */}
+
+      {/* 3. CSS method css modules */}
+      {/* <i className={isHovering ? Styles.visible : Styles.hidden}>🗑️</i> */}
     </li>
   );
 }

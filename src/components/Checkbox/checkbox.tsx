@@ -5,22 +5,47 @@ import Style from "./Checkbox.module.css";
 
 interface CheckboxProps {
   checked: boolean;
-  onChange: () => void;
+  onChange: (isChecked: boolean) => void;
 }
 
 export default function Checkbox({ checked, onChange }: CheckboxProps) {
+  // const [isChecked, setIsChecked] = useState(checked);
   const checkboxClass = checked ? Style.checked : Style.checkbox;
+
+  // function toggleIsChecked() {
+  //   setIsChecked(!isChecked);
+  // }
+
+  // console.log(isChecked);
 
   return (
     <div>
-      <input className={checkboxClass} type="checkbox" onChange={onChange} />
+      <input
+        className={checkboxClass}
+        type="checkbox"
+        checked={checked}
+        onChange={() => onChange(!checked)}
+      />
     </div>
   );
 }
 
-function getFullName(firstName: string, lastName: string) {
-  const fullName = firstName + lastName;
-  return fullName;
-}
+// interface GetFullNameProps {
+//   firstName: string;
+//   lastName: string;
+// }
 
-getFullName("mo", "tai");
+// function getFullName({firstName, lastName }: GetFullNameProps) {
+//   const fullName = firstName + lastName;
+//   return fullName;
+// }
+
+// getFullName({firstName: "mo", lastName: "tai"});
+
+// export function FullName({firstName, lastName}: GetFullNameProps){
+//   const fullName = firstName + lastName;
+
+//   return(
+//     <p>{fullName}</p>
+//   );
+// }
