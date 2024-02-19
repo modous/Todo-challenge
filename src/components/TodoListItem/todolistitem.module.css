@@ -25,3 +25,8 @@
 .completed {
   text-decoration: line-through;
 }
+
+.title {
+  flex: 1;
+  max-width: 332px;
+}
