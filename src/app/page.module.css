@@ -1,20 +1,18 @@
 .main {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   height: 50vh;
 }
 
-.todoSection{
+.todoSection {
   width: 440px;
-  Height: 48px;
-
+  height: 48px;
 }
 
-.h1{
-  font-weight: var(--font-weight); 
-  font-size: var(--font-size); 
+.h1 {
+  font-weight: var(--font-weight);
+  font-size: var(--font-size);
   line-height: var(--font-height);
   text-align: center;
 }
-

@@ -7,8 +7,6 @@ interface ListProps {
 }
 
 export default function List({ data }: ListProps) {
-
-
   // Handle checkbox click to toggle completion
 
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
