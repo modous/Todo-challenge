@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import styles from "./Index.module.css";
 import { TodoItem } from "../todo-item/TodoItem";
@@ -21,7 +23,11 @@ export default function List({ data }: ListProps) {
   return (
     <ul className={styles.list}>
       {data.map((item) => (
-        <TodoItem item={item} key={item.id}>
+        <TodoItem
+          item={item}
+          key={item.id}
+          onTextChange={() => console.log("onTextchange")}
+        >
           {item.title}
         </TodoItem>
       ))}

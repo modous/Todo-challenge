@@ -10,40 +10,55 @@ import { TrashIcon } from "../trash-icon";
 interface TodoItemProps {
   item: ITodoItem;
   children: React.ReactNode;
+  onTextChange: (text: string) => void;
 }
 
-export function TodoItem({ item, children }: TodoItemProps) {
+export function TodoItem({ item, onTextChange }: TodoItemProps) {
   const [isChecked, setIsChecked] = useState(item.completed);
-  const [title, setTitle] = useState(item.title);
+  const [editTitle, setEditTitle] = useState(item.title);
 
   const [isEditing, setIsEditing] = useState(false);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
+    setEditTitle(e.target.value);
   };
 
   // Function to handle saving edited text
   const handleSave = () => {
     // Dit is een property van het component dat wordt afgevuurd
     // wanneer je de nieuwe title wil saven, met daarin de nieuwe title.
-    setTitle(title);
+    onTextChange(editTitle);
     setIsEditing(false);
+  };
+
+  // Function to handle pressing Enter key
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSave();
+    }
   };
 
   return (
     <li className={styles.liBox}>
       <Checkbox checked={isChecked} onChange={setIsChecked} />
 
-      <input
-        className={classnames({
-          [styles.completed]: isChecked,
-          [styles.title]: true,
-        })}
-        onClick={() => setIsEditing(true)}
-        onBlur={handleSave}
-        onChange={handleTextChange}
-        value={title}
-      ></input>
+      {isEditing ? (
+        <input
+          className={classnames({
+            [styles.completed]: isChecked,
+            [styles.title]: true,
+          })}
+          onClick={() => setIsEditing(true)}
+          onBlur={handleSave}
+          onChange={handleTextChange}
+          value={editTitle}
+          onKeyDown={handleKeyPress}
+        ></input>
+      ) : (
+        <span className={styles.spanTitle} onClick={() => setIsEditing(true)}>
+          {item.title}
+        </span>
+      )}
 
       <div className={styles.divBox}>
         <TrashIcon />

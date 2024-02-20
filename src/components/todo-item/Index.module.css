@@ -38,4 +38,15 @@
 .title {
   flex: 1;
   max-width: 332px;
+  border: none;
+}
+
+.liBox:hover .title {
+  background-color: var(--background-color);
+}
+
+.spanTitle {
+  flex: 1;
+  max-width: 332px;
+  border: none;
 }
