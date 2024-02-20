@@ -15,8 +15,8 @@ interface TodoItemProps {
 
 export function TodoItem({ item, onTextChange }: TodoItemProps) {
   const [isChecked, setIsChecked] = useState(item.completed);
-  const [editTitle, setEditTitle] = useState(item.title);
 
+  const [editTitle, setEditTitle] = useState(item.title);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +61,7 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
           })}
           onClick={() => setIsEditing(true)}
         >
-          {item.title}
+          {editTitle}
         </span>
       )}
 
