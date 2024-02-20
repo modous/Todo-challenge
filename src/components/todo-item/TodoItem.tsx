@@ -57,7 +57,7 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
         <span
           className={classnames({
             [styles.completed]: isChecked,
-            [styles.title]: true,
+            [styles.spanTitle]: true,
           })}
           onClick={() => setIsEditing(true)}
         >

@@ -12,13 +12,13 @@
   line-height: 16px;
   font-size: 14px;
   color: var(--primary-colour);
-  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; */
 }
 
 .liBox:hover {
   background-color: var(--background-color);
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
+  /* transform: scale(1.05); */
+  /* transition: transform 0.3s ease; */
   border-bottom: 1px solid var(--border-color);
   border-radius: 10px;
 }
@@ -45,4 +45,23 @@
   flex: 1;
   max-width: 332px;
   border: none;
+  outline: none;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+/* .title:focus {
+  outline: none;
+  line-height: 16px;
+  font-size: 14px;
+  font-family: var(--font-family);
+} */
+
+.spanTitle {
+  flex: 1;
+  max-width: 332px;
+  border: none;
+  align-items: center;
+  line-height: 16px;
+  display: flex;
 }
