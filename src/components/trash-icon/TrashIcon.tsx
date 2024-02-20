@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import styles from "./TrashIcon.module.css";
+import styles from "./Index.module.css";
 
-export default function Thrash() {
+export function TrashIcon() {
   return <button className={styles.button} type="button"></button>;
 }

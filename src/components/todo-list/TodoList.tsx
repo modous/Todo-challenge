@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./TodoList.module.css";
-import TodoListItem from "../TodoListItem/TodoListItem";
+import styles from "./Index.module.css";
+import { TodoItem } from "../todo-item/TodoItem";
 
 interface ListProps {
   data: ITodoItem[];
@@ -21,9 +21,9 @@ export default function List({ data }: ListProps) {
   return (
     <ul className={styles.list}>
       {data.map((item) => (
-        <TodoListItem item={item} key={item.id}>
+        <TodoItem item={item} key={item.id}>
           {item.title}
-        </TodoListItem>
+        </TodoItem>
       ))}
     </ul>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
-import List from "../components/List/TodoList";
+import List from "../components/todo-list/TodoList";
 
 async function getData() {
   const result = await fetch(

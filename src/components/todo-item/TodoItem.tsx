@@ -1,22 +1,22 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./TodoListItem.module.css";
-import TrashIcon from "../Thrash/TrashIcon";
-import Checkbox from "../Checkbox/Checkbox";
+import styles from "./Index.module.css";
+import { Checkbox } from "../checkbox/Checkbox";
 import { useHover } from "@uidotdev/usehooks";
 import classnames from "classnames";
+import { TrashIcon } from "../trash-icon";
 
 interface TodoItemProps {
   item: ITodoItem;
   children: React.ReactNode;
 }
 
-export default function TodoItem({ item, children }: TodoItemProps) {
+export function TodoItem({ item, children }: TodoItemProps) {
   const [isChecked, setIsChecked] = useState(item.completed);
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(children);
-  
+
   function handleTextChange(e: React.ChangeEvent<HTMLSpanElement>) {
     children = e.target.innerText;
   }
