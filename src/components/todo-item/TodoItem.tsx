@@ -14,17 +14,19 @@ interface TodoItemProps {
 
 export function TodoItem({ item, children }: TodoItemProps) {
   const [isChecked, setIsChecked] = useState(item.completed);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedText, setEditedText] = useState(children);
+  const [title, setTitle] = useState(item.title);
 
-  function handleTextChange(e: React.ChangeEvent<HTMLSpanElement>) {
-    children = e.target.innerText;
-  }
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
 
   // Function to handle saving edited text
   const handleSave = () => {
-    // Save the edited text
-    children = editedText;
+    // Dit is een property van het component dat wordt afgevuurd
+    // wanneer je de nieuwe title wil saven, met daarin de nieuwe title.
+    setTitle(title);
     setIsEditing(false);
   };
 
@@ -32,18 +34,16 @@ export function TodoItem({ item, children }: TodoItemProps) {
     <li className={styles.liBox}>
       <Checkbox checked={isChecked} onChange={setIsChecked} />
 
-      <span
-        className={classnames("title", {
+      <input
+        className={classnames({
           [styles.completed]: isChecked,
           [styles.title]: true,
         })}
         onClick={() => setIsEditing(true)}
-        contentEditable
         onBlur={handleSave}
-        onInput={handleTextChange}
-      >
-        {children}
-      </span>
+        onChange={handleTextChange}
+        value={title}
+      ></input>
 
       <div className={styles.divBox}>
         <TrashIcon />
