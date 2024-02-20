@@ -9,14 +9,7 @@ interface CheckboxProps {
 }
 
 export function Checkbox({ checked, onChange }: CheckboxProps) {
-  // const [isChecked, setIsChecked] = useState(checked);
   const checkboxClass = checked ? styles.checked : styles.checkbox;
-
-  // function toggleIsChecked() {
-  //   setIsChecked(!isChecked);
-  // }
-
-  // console.log(isChecked);
 
   return (
     <div>
@@ -29,23 +22,3 @@ export function Checkbox({ checked, onChange }: CheckboxProps) {
     </div>
   );
 }
-
-// interface GetFullNameProps {
-//   firstName: string;
-//   lastName: string;
-// }
-
-// function getFullName({firstName, lastName }: GetFullNameProps) {
-//   const fullName = firstName + lastName;
-//   return fullName;
-// }
-
-// getFullName({firstName: "mo", lastName: "tai"});
-
-// export function FullName({firstName, lastName}: GetFullNameProps){
-//   const fullName = firstName + lastName;
-
-//   return(
-//     <p>{fullName}</p>
-//   );
-// }

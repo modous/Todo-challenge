@@ -12,11 +12,12 @@
   line-height: 16px;
   font-size: 14px;
   color: var(--primary-colour);
+  transition: transform 0.3s ease;
 }
 
 .liBox:hover {
   background-color: var(--background-color);
-  transform: scale(1.01);
+  transform: scale(1.05);
   transition: transform 0.3s ease;
   border-bottom: 1px solid var(--border-color);
   border-radius: 10px;
