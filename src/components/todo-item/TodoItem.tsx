@@ -25,8 +25,6 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
 
   // Function to handle saving edited text
   const handleSave = () => {
-    // Dit is een property van het component dat wordt afgevuurd
-    // wanneer je de nieuwe title wil saven, met daarin de nieuwe title.
     onTextChange(editTitle);
     setIsEditing(false);
   };
@@ -44,6 +42,7 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
 
       {isEditing ? (
         <input
+          autoFocus
           className={classnames({
             [styles.completed]: isChecked,
             [styles.title]: true,
@@ -55,7 +54,13 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
           onKeyDown={handleKeyPress}
         ></input>
       ) : (
-        <span className={styles.spanTitle} onClick={() => setIsEditing(true)}>
+        <span
+          className={classnames({
+            [styles.completed]: isChecked,
+            [styles.title]: true,
+          })}
+          onClick={() => setIsEditing(true)}
+        >
           {item.title}
         </span>
       )}

@@ -35,17 +35,13 @@
   text-decoration: line-through;
 }
 
-.title {
-  flex: 1;
-  max-width: 332px;
-  border: none;
-}
-
 .liBox:hover .title {
   background-color: var(--background-color);
 }
 
-.spanTitle {
+.title {
+  line-height: 16px;
+  font-size: 14px;
   flex: 1;
   max-width: 332px;
   border: none;
