@@ -1,23 +1,31 @@
 "use client";
 
+import classnames from "classnames";
 import styles from "./Index.module.css";
+import { ComponentProps } from "react";
 
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-  type?: "button" | "delete";
-  size?: "small" | "medium" | "large";
+interface ButtonProps extends ComponentProps<"button"> {
+  size?: "sm" | "md" | "lg";
   icon?: React.ReactNode;
-  className: string;
 }
 
 export function Button({
   children,
-  onClick,
-  type = "button",
-  size = "medium",
+  type = "button" ,
+  size = "md",
   icon,
   className,
+  ...props
 }: ButtonProps) {
-  return <button className={`button ${type} ${size} ${className}`} onClick={onClick}>{children}</button>;
+  return (
+    <button
+      className={classnames("button", type, size, className)}
+      {...props}
+    >
+      {icon}
+      {children}
+    </button>
+  );
 }
+
+
