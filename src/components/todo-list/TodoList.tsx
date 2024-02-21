@@ -21,15 +21,16 @@ export default function List({ data }: ListProps) {
   }
 
   return (
-    <ul className={styles.list}>
+    <ul className={styles.ulContainer}>
       {data.map((item) => (
-        <TodoItem
-          item={item}
-          key={item.id}
-          onTitleChange={() => console.log("onTextchange")}
-        >
-          {item.title}
-        </TodoItem>
+        <li className={styles.listContainer} key={item.id}>
+          <TodoItem
+            item={item}
+            onTitleChange={() => console.log("onTextchange")}
+          >
+            {item.title}
+          </TodoItem>
+        </li>
       ))}
     </ul>
   );

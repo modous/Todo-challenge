@@ -48,7 +48,12 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
   };
 
   return (
-    <li className={styles.liBox}>
+    <div
+      className={classnames(styles.container, {
+        [styles.isEditing]: isEditing,
+        [styles.onEdit]: isEditing,
+      })}
+    >
       <Checkbox checked={isChecked} onChange={setIsChecked} />
 
       {isEditing ? (
@@ -57,6 +62,7 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
           className={classnames({
             [styles.completed]: isChecked,
             [styles.title]: true,
+            [styles.editTitle]: true,
           })}
           onClick={() => setIsEditing(true)}
           onBlur={handleSave}
@@ -80,11 +86,13 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
       )}
 
       <button
-        className={classnames({ [styles.button]: true, [styles.divBox]: true })}
+        className={classnames({
+          [styles.deleteButton]: true,
+        })}
         type="button"
       >
         <HiMiniTrash className={styles.icon} />
       </button>
-    </li>
+    </div>
   );
 }
