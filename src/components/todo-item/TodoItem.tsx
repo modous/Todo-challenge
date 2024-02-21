@@ -29,7 +29,7 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
     setIsEditing(false);
   };
 
-  const handleEscape = () => {
+  const handleCancel = () => {
     setEditTitle(item.title);
     setIsEditing(false);
   };
@@ -41,9 +41,10 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
     }
   };
 
-  const handleCancel = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  // function to cancel when pressing escape
+  const handleKeyEscape = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Escape") {
-      handleEscape();
+      handleCancel();
     }
   };
 
@@ -64,7 +65,7 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
           value={editTitle}
           onKeyDown={(e) => {
             handleKeyPress(e);
-            handleCancel(e);
+            handleKeyEscape(e);
           }}
         ></input>
       ) : (
