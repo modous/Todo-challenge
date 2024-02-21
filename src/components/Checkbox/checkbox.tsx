@@ -12,13 +12,11 @@ export function Checkbox({ checked, onChange }: CheckboxProps) {
   const checkboxClass = checked ? styles.checked : styles.checkbox;
 
   return (
-    <div>
-      <input
-        className={checkboxClass}
-        type="checkbox"
-        checked={checked}
-        onChange={() => onChange(!checked)}
-      />
-    </div>
+    <input
+      className={checkboxClass}
+      type="checkbox"
+      checked={checked}
+      onChange={() => onChange(!checked)}
+    />
   );
 }

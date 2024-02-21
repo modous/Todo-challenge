@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styles from "./Index.module.css";
 import { Checkbox } from "../checkbox/Checkbox";
 import classnames from "classnames";
-import { TrashIcon } from "../trash-icon";
+import { HiMiniTrash } from "react-icons/hi2";
 
 interface TodoItemProps {
   item: ITodoItem;
@@ -68,7 +68,7 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
           }}
         ></input>
       ) : (
-        <span
+        <button
           className={classnames({
             [styles.completed]: isChecked,
             [styles.spanTitle]: true,
@@ -76,12 +76,15 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
           onClick={() => setIsEditing(true)}
         >
           {editTitle}
-        </span>
+        </button>
       )}
 
-      <div className={styles.divBox}>
-        <TrashIcon />
-      </div>
+      <button
+        className={classnames({ [styles.button]: true, [styles.divBox]: true })}
+        type="button"
+      >
+        <HiMiniTrash className={styles.icon} />
+      </button>
     </li>
   );
 }

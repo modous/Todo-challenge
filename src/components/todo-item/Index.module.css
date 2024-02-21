@@ -12,13 +12,10 @@
   line-height: 16px;
   font-size: 14px;
   color: var(--primary-colour);
-  /* transition: transform 0.3s ease; */
 }
 
 .liBox:hover {
   background-color: var(--background-color);
-  /* transform: scale(1.05); */
-  /* transition: transform 0.3s ease; */
   border-bottom: 1px solid var(--border-color);
   border-radius: 10px;
 }
@@ -50,13 +47,6 @@
   font-family: var(--font-family);
 }
 
-/* .title:focus {
-  outline: none;
-  line-height: 16px;
-  font-size: 14px;
-  font-family: var(--font-family);
-} */
-
 .spanTitle {
   flex: 1;
   max-width: 332px;
@@ -64,4 +54,29 @@
   align-items: center;
   line-height: 16px;
   display: flex;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px;
+  cursor: pointer;
+
+  background-size: 50%;
+
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0px 1px 3px 0px #00000014;
+  transition: transform 0.3s ease;
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
