@@ -26,7 +26,7 @@ export default function List({ data }: ListProps) {
         <TodoItem
           item={item}
           key={item.id}
-          onTextChange={() => console.log("onTextchange")}
+          onTitleChange={() => console.log("onTextchange")}
         >
           {item.title}
         </TodoItem>

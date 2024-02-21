@@ -3,17 +3,16 @@
 import React, { useState } from "react";
 import styles from "./Index.module.css";
 import { Checkbox } from "../checkbox/Checkbox";
-import { useHover } from "@uidotdev/usehooks";
 import classnames from "classnames";
 import { TrashIcon } from "../trash-icon";
 
 interface TodoItemProps {
   item: ITodoItem;
   children: React.ReactNode;
-  onTextChange: (text: string) => void;
+  onTitleChange: (text: string) => void;
 }
 
-export function TodoItem({ item, onTextChange }: TodoItemProps) {
+export function TodoItem({ item, onTitleChange }: TodoItemProps) {
   const [isChecked, setIsChecked] = useState(item.completed);
 
   const [editTitle, setEditTitle] = useState(item.title);
@@ -25,7 +24,7 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
 
   // Function to handle saving edited text
   const handleSave = () => {
-    onTextChange(editTitle);
+    onTitleChange(editTitle);
     setIsEditing(false);
   };
 
