@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <section className={styles.todoSection}>
-        <h1 className={styles.h1}>Todo list</h1>
+        <h1 className={styles.title}>Todo list</h1>
         <List data={data} />
       </section>
     </main>
