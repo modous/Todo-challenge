@@ -2,7 +2,7 @@
 
 import styles from "./Index.module.css";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
+interface ButtonProps {
   children: React.ReactNode;
   onClick: () => void;
   type?: "button" | "delete";
@@ -11,9 +11,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   className: string;
 }
 
-function Button(children,){
-
-    return{
-
-    }
+export function Button({
+  children,
+  onClick,
+  type = "button",
+  size = "medium",
+  icon,
+  className,
+}: ButtonProps) {
+  return <button className={`button ${type} ${size} ${className}`} onClick={onClick}>{children}</button>;
 }
