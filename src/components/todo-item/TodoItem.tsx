@@ -71,7 +71,7 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
         <button
           className={classnames({
             [styles.completed]: isChecked,
-            [styles.spanTitle]: true,
+            [styles.buttonTitle]: true,
           })}
           onClick={() => setIsEditing(true)}
         >

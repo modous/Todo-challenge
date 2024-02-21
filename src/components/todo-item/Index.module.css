@@ -43,17 +43,21 @@
   max-width: 332px;
   border: none;
   outline: none;
-  padding: 0;
   font-family: var(--font-family);
+  padding: 0px;
 }
 
-.spanTitle {
+.buttonTitle {
   flex: 1;
   max-width: 332px;
   border: none;
   align-items: center;
   line-height: 16px;
+  font-size: 14px;
   display: flex;
+  font-family: var(--font-family);
+  padding: 0px;
+  background-color: var(--primary-colour);
 }
 
 .icon {
