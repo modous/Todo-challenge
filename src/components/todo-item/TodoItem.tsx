@@ -29,10 +29,21 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
     setIsEditing(false);
   };
 
+  const handleEscape = () => {
+    setEditTitle(item.title);
+    setIsEditing(false);
+  };
+
   // Function to handle pressing Enter key
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSave();
+    }
+  };
+
+  const handleCancel = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") {
+      handleEscape();
     }
   };
 
@@ -51,7 +62,10 @@ export function TodoItem({ item, onTextChange }: TodoItemProps) {
           onBlur={handleSave}
           onChange={handleTextChange}
           value={editTitle}
-          onKeyDown={handleKeyPress}
+          onKeyDown={(e) => {
+            handleKeyPress(e);
+            handleCancel(e);
+          }}
         ></input>
       ) : (
         <span
