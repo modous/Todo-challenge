@@ -4,7 +4,7 @@ import classnames from "classnames";
 import styles from "./index.module.css";
 import { ComponentProps } from "react";
 
-interface ButtonProps extends ComponentProps<"button"> {
+interface IButtonProps extends ComponentProps<"button"> {
   size?: "sm" | "md" | "lg";
   icon?: React.ReactNode;
   variant?: "primary" | "secondary";
@@ -18,7 +18,7 @@ export function Button({
   className,
   variant = "primary",
   ...props
-}: ButtonProps) {
+}: IButtonProps) {
   return (
     <button
       className={classnames(
