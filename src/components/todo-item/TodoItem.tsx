@@ -5,14 +5,15 @@ import styles from "./Index.module.css";
 import { Checkbox } from "../checkbox/Checkbox";
 import classnames from "classnames";
 import { HiMiniTrash } from "react-icons/hi2";
+import { Button } from "../button";
 
-interface TodoItemProps {
+interface ITodoItemProps {
   item: ITodoItem;
   children: React.ReactNode;
   onTitleChange: (text: string) => void;
 }
 
-export function TodoItem({ item, onTitleChange }: TodoItemProps) {
+export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
   //checkbox
   const [isChecked, setIsChecked] = useState(item.completed);
 
@@ -94,14 +95,16 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
         </button>
       )}
 
-      <button
+      <Button
         className={classnames({
           [styles.deleteButton]: true,
         })}
         type="button"
+        variant="secondary"
+        size="md"
       >
         <HiMiniTrash className={styles.icon} />
-      </button>
+      </Button>
     </div>
   );
 }

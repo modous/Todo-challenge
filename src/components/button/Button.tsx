@@ -26,8 +26,10 @@ export function Button({
         {
           [styles.primary]: variant === "primary",
           [styles.secondary]: variant === "secondary",
+          [styles.sm]: size === "sm",
+          [styles.md]: size === "md",
+          [styles.lg]: size === "lg",
         },
-        styles[size],
         className
       )}
       type={type}
