@@ -7,25 +7,22 @@ import { ComponentProps } from "react";
 interface ButtonProps extends ComponentProps<"button"> {
   size?: "sm" | "md" | "lg";
   icon?: React.ReactNode;
+  variant?: "primary" | "secondary";
 }
 
 export function Button({
   children,
-  type = "button" ,
+  type = "button",
   size = "md",
   icon,
   className,
+  variant = "primary",
   ...props
 }: ButtonProps) {
   return (
-    <button
-      className={classnames("button", type, size, className)}
-      {...props}
-    >
+    <button className={classnames("button", type, size, className)} {...props}>
       {icon}
       {children}
     </button>
   );
 }
-
-

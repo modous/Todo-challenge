@@ -13,8 +13,10 @@ interface TodoItemProps {
 }
 
 export function TodoItem({ item, onTitleChange }: TodoItemProps) {
+  //checkbox
   const [isChecked, setIsChecked] = useState(item.completed);
 
+  //title edit
   const [editTitle, setEditTitle] = useState(item.title);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -47,6 +49,10 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
     }
   };
 
+  const handleCheckboxChange = (isChecked: boolean) => {
+    setIsChecked(isChecked);
+  };
+
   return (
     <div
       className={classnames(styles.container, {
@@ -54,7 +60,10 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
         [styles.onEdit]: isEditing,
       })}
     >
-      <Checkbox checked={isChecked} onChange={setIsChecked} />
+      <Checkbox
+        checked={isChecked}
+        onChange={() => handleCheckboxChange(!isChecked)}
+      />
 
       {isEditing ? (
         <input
