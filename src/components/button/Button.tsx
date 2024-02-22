@@ -20,7 +20,19 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button className={classnames("button", type, size, className)} {...props}>
+    <button
+      className={classnames(
+        styles.button,
+        {
+          [styles.primary]: variant === "primary",
+          [styles.secondary]: variant === "secondary",
+        },
+        styles[size],
+        className
+      )}
+      type={type}
+      {...props}
+    >
       {icon}
       {children}
     </button>

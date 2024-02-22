@@ -30,16 +30,16 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
     setIsEditing(false);
   };
 
-  const handleCancel = () => {
-    setEditTitle(item.title);
-    setIsEditing(false);
-  };
-
   // Function to handle pressing Enter key
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSave();
     }
+  };
+
+  const handleCancel = () => {
+    setEditTitle(item.title);
+    setIsEditing(false);
   };
 
   // function to cancel when pressing escape
