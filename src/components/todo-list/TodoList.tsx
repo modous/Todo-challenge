@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./Index.module.css";
+import styles from "./index.module.css";
 import { TodoItem } from "../todo-item/TodoItem";
 
 interface ListProps {
