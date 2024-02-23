@@ -1,17 +1,11 @@
-.secondary,
-.primary {
+.button {
   border-radius: 8px;
   border: 1px;
-  cursor: pointer;
-  background-size: 50%;
   box-shadow: 0px 1px 3px 0px #00000014;
   transition: transform 0.3s ease;
-  display: none;
 }
 
 .primary {
-  width: 69px;
-  height: 40px;
   padding: 12px, 16px;
   gap: 10px;
   background-color: rgba(21, 93, 251, 1);

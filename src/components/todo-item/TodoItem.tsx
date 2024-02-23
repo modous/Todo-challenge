@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import styles from "./index.module.css";
 import { Checkbox } from "../checkbox/Checkbox";
 import classnames from "classnames";
@@ -50,8 +50,8 @@ export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
     }
   };
 
-  const handleCheckboxChange = (isChecked: boolean) => {
-    setIsChecked(isChecked);
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(event.target.checked);
   };
 
   return (
@@ -61,10 +61,7 @@ export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
         [styles.onEdit]: isEditing,
       })}
     >
-      <Checkbox
-        checked={isChecked}
-        onChange={() => handleCheckboxChange(!isChecked)}
-      />
+      <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
 
       {isEditing ? (
         <input

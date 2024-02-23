@@ -3,7 +3,7 @@
 import { ChangeEvent, ComponentProps } from "react";
 import styles from "./index.module.css";
 
-interface ICheckboxProps extends ComponentProps<"input"> {}
+interface ICheckboxProps extends Omit<ComponentProps<"input">, "type"> {}
 
 export function Checkbox({ checked, onChange, ...props }: ICheckboxProps) {
   const checkboxClass = checked ? styles.checked : styles.checkbox;
