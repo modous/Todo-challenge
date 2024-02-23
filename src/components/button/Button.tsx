@@ -23,19 +23,14 @@ export function Button({
     <button
       className={classnames(
         styles.button,
-        {
-          [styles.primary]: variant === "primary",
-          [styles.secondary]: variant === "secondary",
-          [styles.sm]: size === "sm",
-          [styles.md]: size === "md",
-          [styles.lg]: size === "lg",
-        },
+        styles[variant],
+        styles[size],
         className
       )}
       type={type}
       {...props}
     >
-      {icon}
+      {icon && icon}
       {children}
     </button>
   );

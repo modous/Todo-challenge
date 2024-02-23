@@ -1,17 +1,19 @@
+.secondary,
 .primary {
-  width: 69px;
-  height: 40px;
-  padding: 12px, 16px, 12px, 16px;
   border-radius: 8px;
-  gap: 10px;
-
   border: 1px;
   cursor: pointer;
   background-size: 50%;
-
   box-shadow: 0px 1px 3px 0px #00000014;
   transition: transform 0.3s ease;
   display: none;
+}
+
+.primary {
+  width: 69px;
+  height: 40px;
+  padding: 12px, 16px;
+  gap: 10px;
   background-color: rgba(21, 93, 251, 1);
   color: rgba(255, 255, 255, 1);
 }
@@ -25,17 +27,9 @@
 }
 
 .secondary {
-  border-radius: 8px;
-  border: 1px;
-  cursor: pointer;
-
-  background-size: 50%;
-
   background-color: #ffffff;
   border-color: #ffffff;
-  box-shadow: 0px 1px 3px 0px #00000014;
-  transition: transform 0.3s ease;
-  display: none;
+  gap: 10px;
 }
 
 .secondary:hover {

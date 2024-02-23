@@ -3,21 +3,13 @@
 import { ChangeEvent, ComponentProps } from "react";
 import styles from "./Index.module.css";
 
-interface ICheckboxProps extends ComponentProps<"input"> {
-  onCheckedChange?: (isChecked: boolean) => void;
-}
+interface ICheckboxProps extends ComponentProps<"input"> {}
 
-export function Checkbox({
-  checked,
-  onChange,
-  onCheckedChange,
-  ...props
-}: ICheckboxProps) {
+export function Checkbox({ checked, onChange, ...props }: ICheckboxProps) {
   const checkboxClass = checked ? styles.checked : styles.checkbox;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event);
-    onCheckedChange?.(event.target.checked);
   };
   return (
     <input
