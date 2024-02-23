@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, useState } from "react";
 import styles from "./index.module.css";
-import { Checkbox } from "../checkbox/Checkbox";
+import { Checkbox } from "../checkbox";
 import classnames from "classnames";
 import { HiMiniTrash } from "react-icons/hi2";
 import { Button } from "../button";
