@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./page.module.css";
 import List from "../components/todo-list/TodoList";
+import { Input } from "@/components/input";
 
 async function getData() {
   const result = await fetch(
@@ -24,6 +25,7 @@ export default async function Home() {
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
+        <Input className={styles.input}  />
         <List data={data} />
       </section>
     </main>
