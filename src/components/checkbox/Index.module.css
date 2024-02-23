@@ -1,7 +1,6 @@
 /* Checkbox */
 
-.checkbox,
-.checkbox:hover {
+.checkbox {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
