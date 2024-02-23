@@ -8,17 +8,17 @@ import { HiMiniTrash } from "react-icons/hi2";
 import { Button } from "../button";
 
 interface ITodoItemProps {
-  item: ITodoItem;
-  children: React.ReactNode;
+  completed: boolean;
+  title: string;
   onTitleChange: (text: string) => void;
 }
 
-export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
+export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
   //checkbox
-  const [isChecked, setIsChecked] = useState(item.completed);
+  const [isChecked, setIsChecked] = useState(completed);
 
   //title edit
-  const [editTitle, setEditTitle] = useState(item.title);
+  const [editTitle, setEditTitle] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,22 +32,18 @@ export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
   };
 
   // Function to handle pressing Enter key
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSave();
+    }
+    if (e.key === "Escape") {
+      handleCancel();
     }
   };
 
   const handleCancel = () => {
-    setEditTitle(item.title);
+    setEditTitle(title);
     setIsEditing(false);
-  };
-
-  // function to cancel when pressing escape
-  const handleKeyEscape = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Escape") {
-      handleCancel();
-    }
   };
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -75,11 +71,8 @@ export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
           onBlur={handleSave}
           onChange={handleTextChange}
           value={editTitle}
-          onKeyDown={(e) => {
-            handleKeyPress(e);
-            handleKeyEscape(e);
-          }}
-        ></input>
+          onKeyDown={handleKeyDown}
+        />
       ) : (
         <button
           className={classnames({
