@@ -35,19 +35,14 @@ export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSave();
+    } else if (e.key === "Escape") {
+      handleCancel();
     }
   };
 
   const handleCancel = () => {
     setEditTitle(item.title);
     setIsEditing(false);
-  };
-
-  // function to cancel when pressing escape
-  const handleKeyEscape = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Escape") {
-      handleCancel();
-    }
   };
 
   const handleCheckboxChange = (isChecked: boolean) => {
@@ -80,7 +75,6 @@ export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
           value={editTitle}
           onKeyDown={(e) => {
             handleKeyPress(e);
-            handleKeyEscape(e);
           }}
         ></input>
       ) : (
