@@ -19,12 +19,11 @@
 
 .secondary {
   border-radius: 8px;
-  border: 1px solid;
+  border: 1px solid rgba(221, 221, 221, 1);
   cursor: pointer;
   gap: 10px;
   background-color: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 0px 1px 3px 0px #00000014;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
   outline: 2px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
