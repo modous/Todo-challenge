@@ -29,6 +29,7 @@ export function Button({
           [styles.deleteButton]: variant === "deleteButton",
           [styles.sm]: size === "sm",
           [styles.lg]: size === "lg",
+          [styles.iconOnly]: icon && !children,
         },
         className
       )}

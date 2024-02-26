@@ -47,3 +47,16 @@
 .lg {
   padding: 12px;
 }
+
+.button svg {
+  height: 16px;
+  width: 16px;
+}
+
+.sm .iconOnly {
+  padding: 8px;
+}
+
+.lg .iconOnly {
+  padding: 12px;
+}
