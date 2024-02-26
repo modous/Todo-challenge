@@ -35,19 +35,18 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSave();
-    }
-    if (e.key === "Escape") {
+    } else if (e.key === "Escape") {
       handleCancel();
     }
   };
 
   const handleCancel = () => {
-    setEditTitle(title);
+    setEditTitle(item.title);
     setIsEditing(false);
   };
 
-  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.target.checked);
+  const handleCheckboxChange = (isChecked: boolean) => {
+    setIsChecked(isChecked);
   };
 
   return (
@@ -71,8 +70,10 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
           onBlur={handleSave}
           onChange={handleTextChange}
           value={editTitle}
-          onKeyDown={handleKeyDown}
-        />
+          onKeyDown={(e) => {
+            handleKeyPress(e);
+          }}
+        ></input>
       ) : (
         <button
           className={classnames({
