@@ -9,7 +9,6 @@
 }
 
 .todoSection {
-  width: 440px;
   height: 48px;
 }
 
@@ -22,10 +21,10 @@
 }
 
 .input {
-  background: rgba(255, 255, 255, 1);
+  color: rgba(153, 153, 153, 1);
   width: 372px;
   height: 40px;
-  padding: 12px, 16px;
+
   border-radius: 8px;
   border: 1px;
   gap: 10px;
@@ -33,6 +32,13 @@
   border: 1px solid rgba(221, 221, 221, 1);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
   padding: 0px;
+
+  font-size: 14px;
+  font-weight: 400px;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-left: 16px;
 }
 
 .input:hover {
@@ -42,4 +48,9 @@
 
 .input:focus {
   border-color: rgba(21, 93, 251, 1);
+}
+
+.addButton {
+  width: 60px;
+  margin-left: 10px;
 }
