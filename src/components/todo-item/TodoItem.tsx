@@ -92,9 +92,8 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
         type="button"
         size="sm"
         variant="secondary"
-      >
-        <HiMiniTrash className={styles.icon} />
-      </Button>
+        icon={<HiMiniTrash />}
+      />
     </div>
   );
 }
