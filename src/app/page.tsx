@@ -27,10 +27,10 @@ export default async function Home() {
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
         <Input className={styles.input} />
-        <Button variant="primary" size="mdLabel">
+        <Button variant="primary" size="lg">
           Label
         </Button>
-        <Button variant="secondary" size="mdLabel">
+        <Button variant="secondary" size="lg">
           Label
         </Button>
         <List data={data} />

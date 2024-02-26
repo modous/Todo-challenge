@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 import { ComponentProps } from "react";
 
 interface IButtonProps extends ComponentProps<"button"> {
-  size?: "smIcon" | "mdIcon" | "lgIcon" | "smLabel" | "mdLabel";
+  size?: "sm" | "lg";
   icon?: React.ReactNode;
   variant?: "primary" | "secondary" | "deleteButton";
 }
@@ -13,7 +13,7 @@ interface IButtonProps extends ComponentProps<"button"> {
 export function Button({
   children,
   type = "button",
-  size = "mdIcon",
+  size = "sm",
   icon,
   className,
   variant = "primary",
@@ -27,11 +27,8 @@ export function Button({
           [styles.primary]: variant === "primary",
           [styles.secondary]: variant === "secondary",
           [styles.deleteButton]: variant === "deleteButton",
-          [styles.sm]: size === "smIcon",
-          [styles.md]: size === "mdIcon",
-          [styles.lg]: size === "lgIcon",
-          [styles.smLabel]: size === "smLabel",
-          [styles.mdLabel]: size === "mdLabel",
+          [styles.sm]: size === "sm",
+          [styles.lg]: size === "lg",
         },
         className
       )}

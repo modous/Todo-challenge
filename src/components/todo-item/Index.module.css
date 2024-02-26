@@ -57,10 +57,21 @@
 .container.isEditing .deleteButton {
   display: none;
 }
-
-.icon {
-  width: 16px;
+.deleteButton {
+  transition: transform 0.3s ease;
+  display: none;
+}
+.deleteButton:hover {
+  transform: scale(1.1);
+}
+.deleteButton:hover {
+  border-radius: 8px;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0px 1px 3px 0px #00000014;
+  transition: transform 0.3s ease;
+}
+.deleteButton svg {
   height: 16px;
-  top: 8px;
-  left: 8px;
+  width: 16px;
 }
