@@ -7,7 +7,7 @@ import { ComponentProps } from "react";
 interface IButtonProps extends ComponentProps<"button"> {
   size?: "sm" | "lg";
   icon?: React.ReactNode;
-  variant?: "primary" | "secondary" | "deleteButton";
+  variant?: "primary" | "secondary";
 }
 
 export function Button({
@@ -26,7 +26,6 @@ export function Button({
         {
           [styles.primary]: variant === "primary",
           [styles.secondary]: variant === "secondary",
-          [styles.deleteButton]: variant === "deleteButton",
           [styles.sm]: size === "sm",
           [styles.lg]: size === "lg",
           [styles.iconOnly]: icon && !children,
