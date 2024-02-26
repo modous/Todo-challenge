@@ -14,7 +14,6 @@
 
 .primary:focus {
   outline: 3px solid rgba(21, 93, 251, 0.25);
-
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -38,9 +37,6 @@
 .secondary:focus {
   outline: 3px solid rgba(21, 93, 251, 0.25);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
-}
-
-.secondary:focus {
   border-color: #ffffff;
 }
 
@@ -50,29 +46,4 @@
 
 .lg {
   padding: 12px;
-}
-
-.deleteButton {
-  border: 1px;
-
-  box-shadow: 0px 1px 3px 0px #00000014;
-
-  display: none;
-}
-.deleteButton:hover {
-  transform: scale(1.1);
-  border-radius: 8px;
-
-  background-color: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 0px 1px 3px 0px #00000014;
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(204, 204, 204, 1);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
-  display: block;
-}
-
-.deleteButton:focus {
-  border: 2px solid rgba(21, 93, 251, 0.25);
-  outline: 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
