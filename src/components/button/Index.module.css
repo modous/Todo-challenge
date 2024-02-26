@@ -1,17 +1,9 @@
 .primary {
-  width: 69px;
-  height: 40px;
-  padding: 12px, 16px, 12px, 16px;
   border-radius: 8px;
   gap: 10px;
-
   border: 1px;
-  cursor: pointer;
-  background-size: 50%;
-
   box-shadow: 0px 1px 3px 0px #00000014;
   transition: transform 0.3s ease;
-  display: none;
   background-color: rgba(21, 93, 251, 1);
   color: rgba(255, 255, 255, 1);
 }
@@ -22,20 +14,18 @@
 
 .primary:focus {
   border: 3px solid rgba(21, 93, 251, 0.25);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 .secondary {
   border-radius: 8px;
   border: 1px;
   cursor: pointer;
-
-  background-size: 50%;
-
+  gap: 10px;
   background-color: #ffffff;
   border-color: #ffffff;
   box-shadow: 0px 1px 3px 0px #00000014;
   transition: transform 0.3s ease;
-  display: none;
 }
 
 .secondary:hover {
@@ -48,17 +38,58 @@
   outline: 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
-.sm {
+.smLabel {
+  width: 61px;
+  height: 32px;
+}
+
+.mdLabel {
+  width: 69px;
+  height: 40px;
+}
+
+.smIcon {
   width: 16px;
   height: 16px;
 }
 
-.md {
+.mdIcon {
   width: 32px;
   height: 32px;
 }
 
-.lg {
+.lgIcon {
   width: 40px;
   height: 40px;
+}
+
+.deleteButton {
+  padding-top: 4px;
+  border-radius: 8px;
+  border: 1px;
+  cursor: pointer;
+
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0px 1px 3px 0px #00000014;
+  transition: transform 0.3s ease;
+  display: none;
+}
+.deleteButton:hover {
+  transform: scale(1.1);
+  border-radius: 8px;
+  border: 1px;
+
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0px 1px 3px 0px #00000014;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(204, 204, 204, 1);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+.deleteButton:focus {
+  border: 2px solid rgba(21, 93, 251, 0.25);
+  outline: 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }

@@ -100,8 +100,8 @@ export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
           [styles.deleteButton]: true,
         })}
         type="button"
-        variant="secondary"
-        size="md"
+        size="mdIcon"
+        variant="deleteButton"
       >
         <HiMiniTrash className={styles.icon} />
       </Button>
