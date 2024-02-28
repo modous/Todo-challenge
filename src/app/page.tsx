@@ -26,10 +26,12 @@ export default async function Home() {
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
-        <Input className={styles.input} placeholder="Add new to do" />
-        <Button className={styles.addButton} variant="primary" size="lg">
-          Add
-        </Button>
+        <div className={styles.inputAndButtonContainer}>
+          <Input className={styles.input} placeholder="Add new to do" />
+          <Button className={styles.addButton} variant="primary" size="lg">
+            Add
+          </Button>
+        </div>
         <List data={data} />
       </section>
     </main>

@@ -6,5 +6,5 @@ interface IInputProps extends Omit<ComponentProps<"input">, "type"> {
 }
 
 export function Input({ value, onChange, type, ...props }: IInputProps) {
-  return <input type={type} className="" {...props}></input>;
+  return <input type={type} className="" {...props} />;
 }

@@ -1,15 +1,13 @@
 .ulContainer {
-  /* border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color); */
   text-decoration: none;
   list-style-type: none;
   padding-inline-start: 0px;
 }
 
-.listContainer {
+.listItemContainer {
   border-top: 1px solid var(--border-color);
-  padding-top: 1px;
-  padding-bottom: 1px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .emptyState {
