@@ -9,7 +9,7 @@
   line-height: 16px;
   font-size: var(--font-size);
   color: var(--primary-colour);
-  border-radius: 10px;
+  border-radius: 8px;
   transition: box-shadow 0.2s 0s ease-out;
   box-sizing: border-box;
 }

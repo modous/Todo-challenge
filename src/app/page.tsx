@@ -27,7 +27,7 @@ export default async function Home() {
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
         <div className={styles.inputAndButtonContainer}>
-          <Input className={styles.input} placeholder="Add new to do" />
+          <Input placeholder="Add new to do" />
           <Button className={styles.addButton} variant="primary" size="lg">
             Add
           </Button>
