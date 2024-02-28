@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, ComponentProps } from "react";
-import styles from "./Index.module.css";
+import styles from "./index.module.css";
 
 interface ICheckboxProps extends ComponentProps<"input"> {
   onCheckedChange?: (isChecked: boolean) => void;

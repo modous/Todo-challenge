@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./page.module.css";
+import styles from "./index.module.css";
 import List from "../components/todo-list/TodoList";
 import { Input } from "@/components/input";
 import { Button } from "@/components/button";

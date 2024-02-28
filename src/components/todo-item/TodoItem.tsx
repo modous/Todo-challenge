@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./Index.module.css";
+import styles from "./index.module.css";
 import { Checkbox } from "../checkbox/Checkbox";
 import classnames from "classnames";
 import { HiMiniTrash } from "react-icons/hi2";

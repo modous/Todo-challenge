@@ -1,7 +1,7 @@
 "use client";
 
 import classnames from "classnames";
-import styles from "./Index.module.css";
+import styles from "./index.module.css";
 import { ComponentProps } from "react";
 
 interface IButtonProps extends ComponentProps<"button"> {
@@ -12,7 +12,6 @@ interface IButtonProps extends ComponentProps<"button"> {
 
 export function Button({
   children,
-  type = "button",
   size = "sm",
   icon,
   className,
@@ -32,7 +31,6 @@ export function Button({
         },
         className
       )}
-      type={type}
       {...props}
     >
       {icon}
