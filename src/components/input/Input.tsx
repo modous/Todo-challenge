@@ -1,5 +1,5 @@
 import { ComponentProps } from "react";
-import styles from "./Index.module.css";
+import styles from "./index.module.css";
 
 interface IInputProps extends Omit<ComponentProps<"input">, "type"> {
   type?: "text" | "number" | "email" | "password" | "url";

@@ -12,7 +12,6 @@ interface IButtonProps extends ComponentProps<"button"> {
 
 export function Button({
   children,
-  type = "button",
   size = "sm",
   icon,
   className,
@@ -32,7 +31,6 @@ export function Button({
         },
         className
       )}
-      type={type}
       {...props}
     >
       {icon && icon}

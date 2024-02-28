@@ -1,8 +1,8 @@
 "use client";
 
 import { ChangeEvent, ComponentProps } from "react";
-import classnames from "classnames";
 import styles from "./index.module.css";
+import classnames from "classnames";
 
 interface ICheckboxProps extends Omit<ComponentProps<"input">, "type"> {}
 
