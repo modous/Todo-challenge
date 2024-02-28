@@ -1,17 +1,40 @@
 "use client";
 
-import { ReactNode } from "react";
-import Style from "./Checkbox.module.css";
+import classnames from "classnames";
+import styles from "./index.module.css";
+import { ComponentProps } from "react";
 
-interface ButtonProps{
-    type?: 'primary' | 'secondary';
-    icon?: ReactNode;
-    iconPosition?: 'left' | 'right' ;
+interface IButtonProps extends ComponentProps<"button"> {
+  size?: "sm" | "lg";
+  icon?: React.ReactNode;
+  variant?: "primary" | "secondary";
 }
 
-export default function Button(type: any, icon: any, iconPosition: any):ButtonProps {
-    return (
-      <button type='secondary' icon={trashIcon}>
-      </button>
-    );
-  }
+export function Button({
+  children,
+  size = "sm",
+  icon,
+  className,
+  variant = "primary",
+  ...props
+}: IButtonProps) {
+  return (
+    <button
+      className={classnames(
+        styles.button,
+        {
+          [styles.primary]: variant === "primary",
+          [styles.secondary]: variant === "secondary",
+          [styles.sm]: size === "sm",
+          [styles.lg]: size === "lg",
+          [styles.iconOnly]: icon && !children,
+        },
+        className
+      )}
+      {...props}
+    >
+      {icon && icon}
+      {children}
+    </button>
+  );
+}
