@@ -10,6 +10,7 @@
 
 .todoSection {
   height: 48px;
+  width: 440px;
 }
 
 .title {
@@ -20,9 +21,12 @@
   text-align: center;
 }
 
+.inputAndButtonContainer {
+  display: flex;
+}
+
 .input {
   color: rgba(153, 153, 153, 1);
-  width: 372px;
   height: 40px;
 
   border-radius: 8px;
@@ -40,6 +44,7 @@
   text-align: left;
   padding-left: 16px;
   font-family: var(--font-family);
+  flex: 1;
 }
 
 .input:hover {
@@ -53,5 +58,6 @@
 
 .addButton {
   width: 60px;
+  height: 40px;
   margin-left: 10px;
 }
