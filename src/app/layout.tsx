@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-
+import classnames from "classnames";
+import styles from "./index.module.css";
 
 export const metadata: Metadata = {
   title: "Todo App",
@@ -17,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className} >{children}</body>
+      <body className={classnames(styles.body, inter.className)}>
+        {children}
+      </body>
     </html>
   );
 }

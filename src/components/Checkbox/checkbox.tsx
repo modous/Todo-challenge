@@ -1,27 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
-import Style from "./Checkbox.module.css";
+import { ChangeEvent, ComponentProps } from "react";
+import styles from "./index.module.css";
+import classnames from "classnames";
 
-interface CheckboxProps {
-  checked: boolean;
-  onChange: () => void;
+interface ICheckboxProps extends ComponentProps<"input"> {
+  onCheckedChange?: (isChecked: boolean) => void;
 }
 
-export default function Checkbox({checked, onChange}:CheckboxProps) {
- 
-
-  const checkboxClass = checked ? Style.checked : Style.checkbox;
+export function Checkbox({
+  className,
+  onChange,
+  onCheckedChange,
+  ...props
+}: ICheckboxProps) {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event);
+    onCheckedChange?.(event.target.checked);
+  };
 
   return (
-    <div>
-      <input
-        className={checkboxClass}
-        type="checkbox"
-        onChange={onChange}
-      />
-    </div>
+    <input
+      {...props}
+      className={classnames(styles.checkbox, className)}
+      type="checkbox"
+      onChange={handleChange}
+    />
   );
-};
-
-
+}
