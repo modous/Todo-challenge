@@ -90,9 +90,7 @@ export function TodoItem({ item, onTitleChange }: ITodoItemProps) {
       )}
 
       <Button
-        className={classnames({
-          [styles.deleteButton]: true,
-        })}
+        className={styles.deleteButton}
         type="button"
         size="sm"
         variant="secondary"

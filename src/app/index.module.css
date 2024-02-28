@@ -15,7 +15,7 @@
 .title {
   padding-bottom: 30px;
   font-weight: var(--font-weight);
-  font-size: var(--font-size);
+  font-size: var(--title-font-size);
   line-height: var(--font-height);
   text-align: center;
 }
@@ -33,7 +33,7 @@
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
   padding: 0px;
 
-  font-size: 14px;
+  font-size: var(--font-size);
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0em;

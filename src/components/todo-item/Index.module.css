@@ -10,7 +10,7 @@
   width: 440px;
   height: 48px;
   line-height: 16px;
-  font-size: 14px;
+  font-size: var(--font-size);
   color: var(--primary-colour);
   border-radius: 10px;
   transition: box-shadow 0.2s 0s ease-out;
@@ -37,7 +37,7 @@
 
 .title {
   line-height: 16px;
-  font-size: 14px;
+  font-size: var(--font-size);
   flex: 1;
   max-width: 332px;
   border: none;
@@ -52,7 +52,7 @@
   border: none;
   align-items: center;
   line-height: 16px;
-  font-size: 14px;
+  font-size: var(--font-size);
   display: flex;
   font-family: var(--font-family);
   padding: 0px;
@@ -67,13 +67,11 @@
   transition: transform 0.3s ease;
   display: none;
 }
+
 .deleteButton:hover {
   transform: scale(1.1);
-}
-.deleteButton:hover {
   border-radius: 8px;
   background-color: #ffffff;
   border-color: #ffffff;
   box-shadow: 0px 1px 3px 0px #00000014;
-  transition: transform 0.3s ease;
 }
