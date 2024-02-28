@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css";
 import List from "../components/todo-list/TodoList";
 import { Input } from "@/components/input";
-import { Button } from "@/components/button";
+import { Button } from "../components/Button";
 
 async function getData() {
   const result = await fetch(
