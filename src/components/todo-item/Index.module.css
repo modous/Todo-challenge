@@ -36,7 +36,6 @@
   line-height: 16px;
   font-size: var(--font-size);
   flex: 1;
-  /* max-width: 332px; */
   border: none;
   outline: none;
   font-family: var(--font-family);
