@@ -1,14 +1,16 @@
-:root{
-  --font-family: 'Inter', sans-serif;
-  --primary-color: #000000; 
-  --secondary-color: #6c757d; 
-  --background-color: #EBEBEB; 
-  --text-color: #343a40; 
-  --border-radius: 0.25rem; 
+@import "./reset.css";
+
+:root {
+  --primary-color: #171717;
+  --tertiary-color: #737373;
+  --secondary-color: #eeeeee;
+  --background-color: #ebebeb;
+  --text-color: #343a40;
+  --border-radius: 0.25rem;
   --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --border-color: rgba(128, 128, 128, 0.1);
   --transition-duration: 0.3s;
   --font-weight: 700;
   --font-size: 40px;
-  --line-height: 48px; 
+  --line-height: 48px;
 }
