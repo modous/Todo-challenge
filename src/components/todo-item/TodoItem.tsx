@@ -41,7 +41,7 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
   };
 
   const handleCancel = () => {
-    setEditTitle(item.title);
+    setEditTitle(title);
     setIsEditing(false);
   };
 
@@ -56,7 +56,7 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
         [styles.onEdit]: isEditing,
       })}
     >
-      <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+      <Checkbox checked={isChecked} onCheckedChange={handleCheckboxChange} />
 
       {isEditing ? (
         <input
@@ -70,9 +70,7 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
           onBlur={handleSave}
           onChange={handleTextChange}
           value={editTitle}
-          onKeyDown={(e) => {
-            handleKeyPress(e);
-          }}
+          onKeyDown={handleKeyDown}
         ></input>
       ) : (
         <button

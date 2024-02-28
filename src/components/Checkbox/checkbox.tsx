@@ -16,7 +16,9 @@ export function Checkbox({
 }: ICheckboxProps) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event);
+    onCheckedChange?.(event.target.checked);
   };
+
   return (
     <input
       {...props}
