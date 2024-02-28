@@ -23,7 +23,7 @@ export default function List({ data }: ListProps) {
   return (
     <ul className={styles.ulContainer}>
       {data.map((item) => (
-        <li className={styles.listContainer} key={item.id}>
+        <li className={styles.listItemContainer} key={item.id}>
           <TodoItem
             completed={item.completed}
             title={item.title}

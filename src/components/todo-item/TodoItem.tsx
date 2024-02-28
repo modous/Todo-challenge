@@ -1,8 +1,8 @@
 "use client";
 
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import styles from "./index.module.css";
-import { Checkbox } from "../checkbox";
+import { Checkbox } from "../checkbox/Checkbox";
 import classnames from "classnames";
 import { HiMiniTrash } from "react-icons/hi2";
 import { Button } from "../button";
@@ -35,8 +35,7 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSave();
-    }
-    if (e.key === "Escape") {
+    } else if (e.key === "Escape") {
       handleCancel();
     }
   };
@@ -46,8 +45,8 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
     setIsEditing(false);
   };
 
-  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.target.checked);
+  const handleCheckboxChange = (isChecked: boolean) => {
+    setIsChecked(isChecked);
   };
 
   return (
@@ -57,7 +56,7 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
         [styles.onEdit]: isEditing,
       })}
     >
-      <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+      <Checkbox checked={isChecked} onCheckedChange={handleCheckboxChange} />
 
       {isEditing ? (
         <input
@@ -72,7 +71,7 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
           onChange={handleTextChange}
           value={editTitle}
           onKeyDown={handleKeyDown}
-        />
+        ></input>
       ) : (
         <button
           className={classnames({
@@ -86,14 +85,12 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
       )}
 
       <Button
-        className={classnames({
-          [styles.deleteButton]: true,
-        })}
+        className={styles.deleteButton}
         type="button"
+        size="sm"
         variant="secondary"
-      >
-        <HiMiniTrash className={styles.icon} />
-      </Button>
+        icon={<HiMiniTrash />}
+      />
     </div>
   );
 }

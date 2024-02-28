@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./page.module.css";
+import styles from "./index.module.css";
 import List from "../components/todo-list/TodoList";
+import { Input } from "@/components/input";
+import { Button } from "@/components/button";
 
 async function getData() {
   const result = await fetch(
@@ -24,6 +26,12 @@ export default async function Home() {
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
+        <div className={styles.inputAndButtonContainer}>
+          <Input placeholder="Add new to do" />
+          <Button className={styles.addButton} variant="primary" size="lg">
+            Add
+          </Button>
+        </div>
         <List data={data} />
       </section>
     </main>
