@@ -1,0 +1,52 @@
+.button {
+  border-radius: 8px;
+  border: 1px;
+  box-shadow: 0px 1px 3px 0px #00000014;
+  transition: transform 0.3s ease;
+}
+
+.primary {
+  padding: 12px, 16px;
+  gap: 10px;
+  background-color: rgba(21, 93, 251, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.primary:hover {
+  background-color: rgba(73, 130, 255, 1);
+}
+
+.primary:focus {
+  border: 3px solid rgba(21, 93, 251, 0.25);
+}
+
+.secondary {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  gap: 10px;
+}
+
+.secondary:hover {
+  border: 1px solid rgba(204, 204, 204, 1);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+}
+
+.secondary:focus {
+  border: 2px solid rgba(21, 93, 251, 0.25);
+  outline: 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.sm {
+  width: 16px;
+  height: 16px;
+}
+
+.md {
+  width: 32px;
+  height: 32px;
+}
+
+.lg {
+  width: 40px;
+  height: 40px;
+}

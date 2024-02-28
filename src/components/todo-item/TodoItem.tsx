@@ -1,21 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
-import styles from "./Index.module.css";
-import { Checkbox } from "../checkbox/Checkbox";
+import React, { ChangeEvent, useState } from "react";
+import styles from "./index.module.css";
+import { Checkbox } from "../checkbox";
 import classnames from "classnames";
 import { HiMiniTrash } from "react-icons/hi2";
+import { Button } from "../button";
 
-interface TodoItemProps {
-  item: ITodoItem;
-  children: React.ReactNode;
+interface ITodoItemProps {
+  completed: boolean;
+  title: string;
   onTitleChange: (text: string) => void;
 }
 
-export function TodoItem({ item, onTitleChange }: TodoItemProps) {
-  const [isChecked, setIsChecked] = useState(item.completed);
+export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
+  //checkbox
+  const [isChecked, setIsChecked] = useState(completed);
 
-  const [editTitle, setEditTitle] = useState(item.title);
+  //title edit
+  const [editTitle, setEditTitle] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,23 +31,23 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
     setIsEditing(false);
   };
 
-  const handleCancel = () => {
-    setEditTitle(item.title);
-    setIsEditing(false);
-  };
-
   // Function to handle pressing Enter key
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSave();
     }
-  };
-
-  // function to cancel when pressing escape
-  const handleKeyEscape = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Escape") {
       handleCancel();
     }
+  };
+
+  const handleCancel = () => {
+    setEditTitle(title);
+    setIsEditing(false);
+  };
+
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(event.target.checked);
   };
 
   return (
@@ -54,7 +57,7 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
         [styles.onEdit]: isEditing,
       })}
     >
-      <Checkbox checked={isChecked} onChange={setIsChecked} />
+      <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
 
       {isEditing ? (
         <input
@@ -68,11 +71,8 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
           onBlur={handleSave}
           onChange={handleTextChange}
           value={editTitle}
-          onKeyDown={(e) => {
-            handleKeyPress(e);
-            handleKeyEscape(e);
-          }}
-        ></input>
+          onKeyDown={handleKeyDown}
+        />
       ) : (
         <button
           className={classnames({
@@ -85,14 +85,15 @@ export function TodoItem({ item, onTitleChange }: TodoItemProps) {
         </button>
       )}
 
-      <button
+      <Button
         className={classnames({
           [styles.deleteButton]: true,
         })}
         type="button"
+        variant="secondary"
       >
         <HiMiniTrash className={styles.icon} />
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./Index.module.css";
+import styles from "./index.module.css";
 import { TodoItem } from "../todo-item/TodoItem";
 
 interface ListProps {
@@ -25,11 +25,10 @@ export default function List({ data }: ListProps) {
       {data.map((item) => (
         <li className={styles.listContainer} key={item.id}>
           <TodoItem
-            item={item}
+            completed={item.completed}
+            title={item.title}
             onTitleChange={() => console.log("onTextchange")}
-          >
-            {item.title}
-          </TodoItem>
+          />
         </li>
       ))}
     </ul>
