@@ -6,9 +6,10 @@ import { TodoItem } from "../todo-item/TodoItem";
 
 interface ListProps {
   data: ITodoItem[];
+  onTodoChange: (id: number, state: ITodoItem) => void;
 }
 
-export default function List({ data }: ListProps) {
+export default function List({ data, onTodoChange }: ListProps) {
   // Handle checkbox click to toggle completion
 
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
@@ -25,9 +26,14 @@ export default function List({ data }: ListProps) {
       {data.map((item) => (
         <li className={styles.listItemContainer} key={item.id}>
           <TodoItem
+            onCompletedChange={(completed: boolean) =>
+              onTodoChange(item.id, { ...item, completed })
+            }
             completed={item.completed}
             title={item.title}
-            onTitleChange={() => console.log("onTextchange")}
+            onTitleChange={(title: string) =>
+              onTodoChange(item.id, { ...item, title })
+            }
           />
         </li>
       ))}

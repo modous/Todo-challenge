@@ -11,12 +11,15 @@ interface ITodoItemProps {
   completed: boolean;
   title: string;
   onTitleChange: (text: string) => void;
+  onCompletedChange: (completed: boolean) => void;
 }
 
-export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
-  //checkbox
-  const [isChecked, setIsChecked] = useState(completed);
-
+export function TodoItem({
+  completed,
+  title,
+  onTitleChange,
+  onCompletedChange,
+}: ITodoItemProps) {
   //title edit
   const [editTitle, setEditTitle] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
@@ -45,10 +48,6 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
     setIsEditing(false);
   };
 
-  const handleCheckboxChange = (isChecked: boolean) => {
-    setIsChecked(isChecked);
-  };
-
   return (
     <div
       className={classnames(styles.container, {
@@ -56,13 +55,12 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
         [styles.onEdit]: isEditing,
       })}
     >
-      <Checkbox checked={isChecked} onCheckedChange={handleCheckboxChange} />
-
+      <Checkbox checked={completed} onCheckedChange={onCompletedChange} />
       {isEditing ? (
         <input
           autoFocus
           className={classnames({
-            [styles.completed]: isChecked,
+            [styles.completed]: completed,
             [styles.title]: true,
             [styles.editTitle]: true,
           })}
@@ -75,7 +73,7 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
       ) : (
         <button
           className={classnames({
-            [styles.completed]: isChecked,
+            [styles.completed]: completed,
             [styles.buttonTitle]: true,
           })}
           onClick={() => setIsEditing(true)}
@@ -83,7 +81,6 @@ export function TodoItem({ completed, title, onTitleChange }: ITodoItemProps) {
           {editTitle}
         </button>
       )}
-
       <Button
         className={styles.deleteButton}
         type="button"

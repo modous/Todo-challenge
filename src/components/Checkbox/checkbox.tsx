@@ -10,12 +10,10 @@ interface ICheckboxProps extends ComponentProps<"input"> {
 
 export function Checkbox({
   className,
-  onChange,
   onCheckedChange,
   ...props
 }: ICheckboxProps) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(event);
     onCheckedChange?.(event.target.checked);
   };
 
