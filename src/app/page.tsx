@@ -18,7 +18,7 @@ async function getData() {
   return result.json();
 }
 
-async function updateData(todoID: number, data: any) {
+async function updateData(todoID: number, data: ITodoItem) {
   try {
     const response = await fetch(API_URL + `${todoID}`, {
       method: "PUT",
@@ -49,7 +49,12 @@ export default function Home() {
   };
 
   const handleTodoChange = async (id: number, state: ITodoItem) => {
+    if (state.title.trim() === "") {
+      // If the title is empty, return without updating the todo
+      return;
+    }
     const newData = await updateData(id, state);
+
     setTodos((todos) => todos.map((todo) => (todo.id === id ? newData : todo)));
   };
 

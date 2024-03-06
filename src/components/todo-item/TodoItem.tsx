@@ -48,6 +48,11 @@ export function TodoItem({
     setIsEditing(false);
   };
 
+  const startEditing = () => {
+    setEditTitle(title);
+    setIsEditing(true);
+  };
+
   return (
     <div
       className={classnames(styles.container, {
@@ -64,7 +69,6 @@ export function TodoItem({
             [styles.title]: true,
             [styles.editTitle]: true,
           })}
-          onClick={() => setIsEditing(true)}
           onBlur={handleSave}
           onChange={handleTextChange}
           value={editTitle}
@@ -76,9 +80,9 @@ export function TodoItem({
             [styles.completed]: completed,
             [styles.buttonTitle]: true,
           })}
-          onClick={() => setIsEditing(true)}
+          onClick={startEditing}
         >
-          {editTitle}
+          {title}
         </button>
       )}
       <Button
