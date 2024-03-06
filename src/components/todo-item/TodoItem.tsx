@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import styles from "./index.module.css";
-import { Checkbox } from "../checkbox";
+import { Checkbox } from "../Checkbox";
 import classnames from "classnames";
 import { HiMiniTrash } from "react-icons/hi2";
-import { Button } from "../button";
+import { Button } from "../Button";
 
 interface ITodoItemProps {
   completed: boolean;

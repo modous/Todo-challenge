@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import TodoList from "../components/todo-list/TodoList";
 import { Input } from "../components/input";
-import { Button } from "../components/button";
+import { Button } from "../components/Button";
 
 const API_URL = "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/";
 
