@@ -29,6 +29,7 @@ async function updateData(todoID: number, data: any) {
     });
 
     const result = await response.json();
+
     return result;
   } catch (error) {
     console.error("Error:", error);
@@ -37,6 +38,7 @@ async function updateData(todoID: number, data: any) {
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
+
   useEffect(() => {
     loadData();
   }, []);
