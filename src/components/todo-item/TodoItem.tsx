@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 import { Checkbox } from "../checkbox";
 import classnames from "classnames";
 import { HiMiniTrash } from "react-icons/hi2";
-import { Button } from "../Button";
+import { Button } from "../button";
 
 interface ITodoItemProps {
   completed: boolean;
