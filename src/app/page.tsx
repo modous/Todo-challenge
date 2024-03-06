@@ -3,34 +3,30 @@
 import React, { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import TodoList from "../components/todo-list/TodoList";
-import { Input } from "@/components/input";
+import { Input } from "../components/input";
 import { Button } from "../components/Button";
 
+const API = "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/";
+
 async function getData() {
-  const result = await fetch(
-    "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/"
-  );
+  const result = await fetch(API);
 
   if (!result.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
-  console.log(result);
   return result.json();
 }
 
 async function updateData(todoID: number, data: any) {
   try {
-    const response = await fetch(
-      `https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/${todoID}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const response = await fetch(API + `${todoID}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
     const result = await response.json();
     return result;
