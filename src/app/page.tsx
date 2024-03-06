@@ -6,10 +6,10 @@ import TodoList from "../components/todo-list/TodoList";
 import { Input } from "../components/input";
 import { Button } from "../components/Button";
 
-const API = "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/";
+const API_URL = "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/";
 
 async function getData() {
-  const result = await fetch(API);
+  const result = await fetch(API_URL);
 
   if (!result.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -20,7 +20,7 @@ async function getData() {
 
 async function updateData(todoID: number, data: any) {
   try {
-    const response = await fetch(API + `${todoID}`, {
+    const response = await fetch(API_URL + `${todoID}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
