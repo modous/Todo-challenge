@@ -90,7 +90,7 @@ export default function Home() {
 
     try {
       const response = await addData(newTodoData);
-      setTodos([response, ...todos]);
+      setTodos([...todos, response]);
     } catch (error) {
       console.error("Failed to add new todo:", error);
     }

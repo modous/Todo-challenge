@@ -35,7 +35,6 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
       />
       <Button
         onClick={() => {
-          console.log("Add button clicked");
           handleAddTodo();
         }}
         className={styles.addButton}
