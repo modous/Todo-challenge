@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import TodoList from "../components/todo-list/TodoList";
-import { Input } from "../components/input";
-import { Button } from "../components/button";
 import { AddTodoForm } from "@/components/add-todo-form";
 
 const API_URL = "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/";
@@ -83,7 +81,7 @@ export default function Home() {
     if (todo.title.trim() === "") {
       return;
     }
-    console.log("Received Todo:", todo);
+
     const newTodoData: ITodoItem = {
       title: todo.title,
       completed: false,
@@ -92,7 +90,7 @@ export default function Home() {
 
     try {
       const response = await addData(newTodoData);
-      setTodos([...todos, response]);
+      setTodos([response, ...todos]);
     } catch (error) {
       console.error("Failed to add new todo:", error);
     }
