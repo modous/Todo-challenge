@@ -60,7 +60,6 @@ async function updateData(todoID: number, data: ITodoItem) {
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
-  const [newTodoTitle, setNewTodoTitle] = useState<ITodoItem[]>([]);
 
   useEffect(() => {
     loadData();
@@ -73,7 +72,6 @@ export default function Home() {
 
   const handleTodoChange = async (id: number, state: ITodoItem) => {
     if (state.title.trim() === "") {
-      // If the title is empty, return without updating the todo
       return;
     }
     const newData = await updateData(id, state);
@@ -81,11 +79,30 @@ export default function Home() {
     setTodos((todos) => todos.map((todo) => (todo.id === id ? newData : todo)));
   };
 
+  const handleAddTodo = async (todo: ITodoItem) => {
+    if (todo.title.trim() === "") {
+      return;
+    }
+    console.log("Received Todo:", todo);
+    const newTodoData: ITodoItem = {
+      title: todo.title,
+      completed: false,
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      const response = await addData(newTodoData);
+      setTodos([...todos, response]);
+    } catch (error) {
+      console.error("Failed to add new todo:", error);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
-        <AddTodoForm />
+        <AddTodoForm onAddTodo={handleAddTodo} />
         <TodoList data={todos} onTodoChange={handleTodoChange} />
       </section>
     </main>

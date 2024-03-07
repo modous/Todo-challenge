@@ -1,19 +1,46 @@
-import { Button } from "../button";
+import React, { useState, ChangeEvent } from "react";
 import { Input } from "../input";
-import styles from "./Index.module.css";
+import { Button } from "../button";
+import styles from "./index.module.css";
 
-export function AddTodoForm() {
-  const handleAddTodo = async (title: string) => {
-    if (title.trim() === "") {
+interface IAddTodoFormProps {
+  onAddTodo: (todo: ITodoItem) => void;
+}
+
+export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
+  const [newTodoTitle, setNewTodoTitle] = useState("");
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setNewTodoTitle(event.target.value);
+  };
+
+  const handleAddTodo = () => {
+    console.log("New Todo Data.");
+    if (newTodoTitle.trim() === "") {
       return;
     }
+
+    const newTodoData: ITodoItem = {
+      title: newTodoTitle,
+      completed: false,
+      createdAt: new Date().toISOString(),
+    };
+
+    onAddTodo(newTodoData);
   };
 
   return (
     <div className={styles.inputAndButtonContainer}>
-      <Input placeholder="Add new to do" />
+      <Input
+        placeholder="Add new to do"
+        value={newTodoTitle}
+        onChange={handleInputChange}
+      />
       <Button
-        onClick={handleAddTodo}
+        onClick={() => {
+          console.log("Add button clicked");
+          handleAddTodo();
+        }}
         className={styles.addButton}
         variant="primary"
         size="lg"

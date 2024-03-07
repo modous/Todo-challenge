@@ -1,5 +1,5 @@
 interface ITodoItem {
-  id: number;
+  id?: number;
   title: string;
   completed: boolean;
   createdAt: string;
