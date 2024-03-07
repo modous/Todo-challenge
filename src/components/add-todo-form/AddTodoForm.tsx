@@ -4,7 +4,7 @@ import { Button } from "../button";
 import styles from "./index.module.css";
 
 interface IAddTodoFormProps {
-  onAddTodo: (todo: ITodoItem, resetInput: () => void) => void;
+  onAddTodo: (todo: ITodoItem) => void;
 }
 
 export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
@@ -13,19 +13,20 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTodoTitle(event.target.value);
   };
-
+  const resetInput = () => {
+    setNewTodoTitle("");
+  };
   const handleAddTodo = () => {
     const newTodoData: ITodoItem = {
       title: newTodoTitle,
       completed: false,
-      createdAt: new Date().toISOString(),
     };
 
-    onAddTodo(newTodoData, resetInput);
+    onAddTodo(newTodoData);
+
+    resetInput();
   };
-  const resetInput = () => {
-    setNewTodoTitle("");
-  };
+
   return (
     <div className={styles.inputAndButtonContainer}>
       <Input
