@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 import TodoList from "../components/todo-list/TodoList";
 import { Input } from "../components/input";
 import { Button } from "../components/button";
+import { AddTodoForm } from "@/components/add-todo-form";
 
 const API_URL = "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/";
 
@@ -12,10 +13,31 @@ async function getData() {
   const result = await fetch(API_URL);
 
   if (!result.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
   return result.json();
+}
+
+async function addData(data: ITodoItem) {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to add data");
+    }
+
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
 }
 
 async function updateData(todoID: number, data: ITodoItem) {
@@ -38,6 +60,7 @@ async function updateData(todoID: number, data: ITodoItem) {
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
+  const [newTodoTitle, setNewTodoTitle] = useState<ITodoItem[]>([]);
 
   useEffect(() => {
     loadData();
@@ -62,12 +85,7 @@ export default function Home() {
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
-        <div className={styles.inputAndButtonContainer}>
-          <Input placeholder="Add new to do" />
-          <Button className={styles.addButton} variant="primary" size="lg">
-            Add
-          </Button>
-        </div>
+        <AddTodoForm />
         <TodoList data={todos} onTodoChange={handleTodoChange} />
       </section>
     </main>
