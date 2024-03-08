@@ -12,11 +12,13 @@ interface ITodoItemProps {
   title: string;
   onTitleChange: (text: string) => void;
   onCompletedChange: (completed: boolean) => void;
+  onDelete: () => void;
 }
 
 export function TodoItem({
   completed,
   title,
+  onDelete,
   onTitleChange,
   onCompletedChange,
 }: ITodoItemProps) {
@@ -91,6 +93,7 @@ export function TodoItem({
         size="sm"
         variant="secondary"
         icon={<HiMiniTrash />}
+        onClick={onDelete}
       />
     </div>
   );

@@ -56,6 +56,25 @@ async function updateData(todoID: number, data: ITodoItem) {
   }
 }
 
+async function deleteData(todoID: number) {
+  try {
+    const response = await fetch(API_URL + `${todoID}`, {
+      method: "Delete",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to remove data");
+    }
+
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
 
@@ -95,12 +114,21 @@ export default function Home() {
     }
   };
 
+  const handleDeleteTodo = async (todoID: number) => {
+    try {
+      await deleteData(todoID);
+      setTodos(todos.filter((todo) => todo.id !== todoID));
+    } catch (error) {
+      console.error("Failed to delete todo:", error);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
-        <AddTodoForm onAddTodo={handleAddTodo} />
-        <TodoList data={todos} onTodoChange={handleTodoChange} />
+        <AddTodoForm onAddTodo={handleAddTodo}  />
+        <TodoList data={todos} onTodoChange={handleTodoChange} onDeleteTodo={handleDeleteTodo}/>
       </section>
     </main>
   );
