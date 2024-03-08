@@ -20,13 +20,3 @@
   line-height: var(--font-height);
   text-align: center;
 }
-
-.inputAndButtonContainer {
-  display: flex;
-}
-
-.addButton {
-  width: 60px;
-  height: 40px;
-  margin-left: 10px;
-}
