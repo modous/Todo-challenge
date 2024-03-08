@@ -7,9 +7,14 @@ import { TodoItem } from "../todo-item/TodoItem";
 interface ListProps {
   data: ITodoItem[];
   onTodoChange: (id: number, state: ITodoItem) => void;
+  onDeleteTodo: (id: number) => void;
 }
 
-export default function TodoList({ data, onTodoChange }: ListProps) {
+export default function TodoList({
+  data,
+  onTodoChange,
+  onDeleteTodo,
+}: ListProps) {
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
   if (data.length === 0) {
     return (
@@ -27,6 +32,7 @@ export default function TodoList({ data, onTodoChange }: ListProps) {
             onCompletedChange={(completed: boolean) =>
               onTodoChange(item.id, { ...item, completed })
             }
+            onDelete={() => onDeleteTodo(item.id)}
             completed={item.completed}
             title={item.title}
             onTitleChange={(title: string) =>

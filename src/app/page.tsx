@@ -127,8 +127,8 @@ export default function Home() {
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
-        <AddTodoForm onAddTodo={handleAddTodo} onDeleteTodo={handleDeleteTodo} />
-        <TodoList data={todos} onTodoChange={handleTodoChange} />
+        <AddTodoForm onAddTodo={handleAddTodo}  />
+        <TodoList data={todos} onTodoChange={handleTodoChange} onDeleteTodo={handleDeleteTodo}/>
       </section>
     </main>
   );
