@@ -1,8 +1,8 @@
 interface ITodoItem {
-  id?: number;
+  id: number;
   title: string;
   completed: boolean;
-  createdAt?: string;
+  createdAt: string;
 }
 
 type IAddTodoItemData = Pick<ITodoItem, "title" | "completed">;
