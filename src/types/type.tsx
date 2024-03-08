@@ -4,3 +4,5 @@ interface ITodoItem {
   completed: boolean;
   createdAt?: string;
 }
+
+type IAddTodoItemData = Pick<ITodoItem, "title" | "completed">;

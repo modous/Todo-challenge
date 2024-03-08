@@ -1,10 +1,10 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Input } from "../input";
 import { Button } from "../button";
 import styles from "./index.module.css";
 
 interface IAddTodoFormProps {
-  onAddTodo: (todo: ITodoItem) => void;
+  onAddTodo: (todo: IAddTodoItemData) => void;
 }
 
 export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
@@ -13,11 +13,15 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTodoTitle(event.target.value);
   };
+
   const resetInput = () => {
     setNewTodoTitle("");
   };
-  const handleAddTodo = () => {
-    const newTodoData: ITodoItem = {
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newTodoData: IAddTodoItemData = {
       title: newTodoTitle,
       completed: false,
     };
@@ -28,22 +32,20 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
   };
 
   return (
-    <div className={styles.inputAndButtonContainer}>
+    <form className={styles.inputAndButtonContainer} onSubmit={handleSubmit}>
       <Input
         placeholder="Add new to do"
         value={newTodoTitle}
         onChange={handleInputChange}
       />
       <Button
-        onClick={() => {
-          handleAddTodo();
-        }}
+        type="submit"
         className={styles.addButton}
         variant="primary"
         size="lg"
       >
         Add
       </Button>
-    </div>
+    </form>
   );
 }
