@@ -16,7 +16,7 @@ async function getData() {
   return result.json();
 }
 
-async function addData(data: ITodoItem) {
+async function addData(data: IAddTodoItemData) {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
@@ -77,15 +77,14 @@ export default function Home() {
     setTodos((todos) => todos.map((todo) => (todo.id === id ? newData : todo)));
   };
 
-  const handleAddTodo = async (todo: ITodoItem) => {
+  const handleAddTodo = async (todo: IAddTodoItemData) => {
     if (todo.title.trim() === "") {
       return;
     }
 
-    const newTodoData: ITodoItem = {
+    const newTodoData: IAddTodoItemData = {
       title: todo.title,
       completed: false,
-      createdAt: new Date().toISOString(),
     };
 
     try {
