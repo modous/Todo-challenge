@@ -4,7 +4,7 @@ interface DraggableProps {
   children?: React.ReactNode;
   className?: string;
   onDragStart?: (e: React.DragEvent<HTMLElement>) => void;
-  item: number;
+  itemID: number;
 }
 
 export default function Draggable(props: DraggableProps) {

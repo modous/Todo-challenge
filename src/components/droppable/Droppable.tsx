@@ -13,8 +13,8 @@ export default function Droppable(props: DroppableProps) {
     if (props.onDrop) {
       try {
         // Extract the new order from the event data
-        const newOrder = JSON.parse(e.dataTransfer.getData("text/plain"));
-        props.onDrop(newOrder);
+        // const newOrder = e.dataTransfer.setData("text/plain", JSON.stringify(add your data here));
+        props.onDrop([]);
       } catch (error) {
         console.error("Failed to parse dropped data:", error);
       }
