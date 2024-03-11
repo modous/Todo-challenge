@@ -75,6 +75,27 @@ async function deleteData(todoID: number) {
   }
 }
 
+async function updateTodoOrder(newOrder: number[]) {
+  try {
+    const response = await fetch(API_URL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update todo order");
+    }
+
+    console.log("Todo order updated successfully");
+  } catch (error) {
+    console.error("Failed to update todo order:", error);
+    throw error;
+  }
+}
+
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
 
@@ -123,12 +144,28 @@ export default function Home() {
     }
   };
 
+  const handleUpdateTodoOrder = async (newOrder: number[]) => {
+    try {
+      await updateTodoOrder(newOrder);
+      setTodos((todos) =>
+        newOrder.map((id) => todos.find((todo) => todo.id === id)!)
+      );
+    } catch (error) {
+      console.error("Failed to update todo order:", error);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
-        <AddTodoForm onAddTodo={handleAddTodo}  />
-        <TodoList data={todos} onTodoChange={handleTodoChange} onDeleteTodo={handleDeleteTodo}/>
+        <AddTodoForm onAddTodo={handleAddTodo} />
+        <TodoList
+          data={todos}
+          onTodoChange={handleTodoChange}
+          onDeleteTodo={handleDeleteTodo}
+          onUpdateTodoOrder={handleUpdateTodoOrder}
+        />
       </section>
     </main>
   );

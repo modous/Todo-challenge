@@ -3,16 +3,21 @@ import { DragEvent, DragEventHandler } from "react";
 interface DroppableProps {
   children?: React.ReactNode;
   className?: string;
-  onDrop?: (e: DragEvent<HTMLDivElement>) => void;
+  onDrop?: (newOrder: number[]) => void;
   onDragOver?: (e: DragEvent<HTMLDivElement>) => void;
-  itemOrder: number[];
 }
 
 export default function Droppable(props: DroppableProps) {
   const handleDrop: DragEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault();
     if (props.onDrop) {
-      props.onDrop(e);
+      try {
+        // Extract the new order from the event data
+        const newOrder = JSON.parse(e.dataTransfer.getData("text/plain"));
+        props.onDrop(newOrder);
+      } catch (error) {
+        console.error("Failed to parse dropped data:", error);
+      }
     }
   };
 
