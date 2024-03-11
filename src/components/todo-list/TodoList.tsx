@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 import styles from "./index.module.css";
 import { TodoItem } from "../todo-item/TodoItem";
+import Draggable from "../draggable/Draggable";
+import Droppable from "../droppable/Droppable";
 
 interface ListProps {
   data: ITodoItem[];
@@ -15,6 +17,18 @@ export default function TodoList({
   onTodoChange,
   onDeleteTodo,
 }: ListProps) {
+  const [itemOrder, setItemOrder] = useState<number[]>(
+    data.map((item) => item.id)
+  );
+
+  const [currentItem, setCurrentItem] = useState<number>();
+
+  // Function to handle drag start
+  const onDragStart = (id: number) => {
+    // Set the current dragged item ID
+    setCurrentItem(id);
+  };
+
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
   if (data.length === 0) {
     return (
@@ -27,19 +41,23 @@ export default function TodoList({
   return (
     <ul className={styles.ulContainer}>
       {data.map((item) => (
-        <li className={styles.listItemContainer} key={item.id}>
-          <TodoItem
-            onCompletedChange={(completed: boolean) =>
-              onTodoChange(item.id, { ...item, completed })
-            }
-            onDelete={() => onDeleteTodo(item.id)}
-            completed={item.completed}
-            title={item.title}
-            onTitleChange={(title: string) =>
-              onTodoChange(item.id, { ...item, title })
-            }
-          />
-        </li>
+        <Droppable>
+          <li className={styles.listItemContainer} key={item.id}>
+            <Draggable item={item.id}>
+              <TodoItem
+                onCompletedChange={(completed: boolean) =>
+                  onTodoChange(item.id, { ...item, completed })
+                }
+                onDelete={() => onDeleteTodo(item.id)}
+                completed={item.completed}
+                title={item.title}
+                onTitleChange={(title: string) =>
+                  onTodoChange(item.id, { ...item, title })
+                }
+              />
+            </Draggable>
+          </li>
+        </Droppable>
       ))}
     </ul>
   );
