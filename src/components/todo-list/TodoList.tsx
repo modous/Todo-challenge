@@ -19,31 +19,27 @@ export default function TodoList({
   onDeleteTodo,
   onUpdateTodoOrder,
 }: ListProps) {
-  const handleDrop = async (newOrder: number[], itemId: number) => {
+  const [todoItems, setTodoItems] = useState<ITodoItem[]>(data);
+
+  const handleDrop = async (draggedItemId: number, dropIndex: number) => {
     try {
-      // Find the index of the dragged item in the current order
-      const currentIndex = newOrder.indexOf(itemId);
-      if (currentIndex === -1) {
-        console.error("Item not found in the current order.");
+      const updatedTodoItems = [...todoItems];
+      const draggedItemIndex = updatedTodoItems.findIndex(
+        (item) => item.id === draggedItemId
+      );
+      if (draggedItemIndex === -1) {
+        console.error("Dragged item not found in the current order.");
         return;
       }
 
-      // Remove the dragged item from the current order
-      newOrder.splice(currentIndex, 1);
+      const draggedItem = updatedTodoItems.splice(draggedItemIndex, 1)[0];
+      updatedTodoItems.splice(dropIndex, 0, draggedItem);
+      setTodoItems(updatedTodoItems);
 
-      // Find the index where the item should be inserted based on the position it was dropped
-      const dropIndex = newOrder.findIndex((id) => id === itemId);
-      if (dropIndex === -1) {
-        console.error("Drop index not found.");
-        return;
-      }
+      // Prepare the new order to send to the server
+      const newOrder = updatedTodoItems.map((item) => item.id);
 
-      // Insert the item at the drop index
-      newOrder.splice(dropIndex, 0, itemId);
-
-      console.log(newOrder);
-
-      // Update the item order in the API
+      // Send a request to update the order of items on the server
       await onUpdateTodoOrder(newOrder);
     } catch (error) {
       console.error("Failed to update todo order:", error);
@@ -62,10 +58,7 @@ export default function TodoList({
   return (
     <ul className={styles.ulContainer}>
       {data.map((item, index) => (
-        <Droppable
-          key={item.id}
-          onDrop={(newOrder) => handleDrop(newOrder, item.id)}
-        >
+        <Droppable key={item.id} onDrop={() => handleDrop(index, item.id)}>
           <li className={styles.listItemContainer} key={item.id}>
             <Draggable itemID={item.id}>
               <TodoItem
