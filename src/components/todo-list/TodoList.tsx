@@ -6,6 +6,7 @@ import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useDrop } from "react-dnd";
+import { DropTarget } from "./DropTarget";
 
 interface ListProps {
   data: ITodoItem[];
@@ -26,24 +27,28 @@ export default function TodoList({
       </div>
     );
   }
-
+  const handleDrop = (dropTargetId: number, dragItemId: number) => {
+    console.log("drop:", dropTargetId, dragItemId);
+  };
   return (
     <DndProvider backend={HTML5Backend}>
       <ul className={styles.ulContainer}>
         {data.map((item) => (
           <li className={styles.listItemContainer} key={item.id}>
-            <TodoItem
-              id={item.id}
-              onCompletedChange={(id: number, completed: boolean) =>
-                onTodoChange(id, { ...item, completed })
-              }
-              onDelete={(id: number) => onDeleteTodo(id)}
-              completed={item.completed}
-              title={item.title}
-              onTitleChange={(id: number, title: string) =>
-                onTodoChange(id, { ...item, title })
-              }
-            />
+            <DropTarget>
+              <TodoItem
+                id={item.id}
+                onCompletedChange={(id: number, completed: boolean) =>
+                  onTodoChange(id, { ...item, completed })
+                }
+                onDelete={(id: number) => onDeleteTodo(id)}
+                completed={item.completed}
+                title={item.title}
+                onTitleChange={(id: number, title: string) =>
+                  onTodoChange(id, { ...item, title })
+                }
+              />
+            </DropTarget>
           </li>
         ))}
       </ul>
