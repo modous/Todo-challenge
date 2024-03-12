@@ -27,13 +27,24 @@ export default function TodoList({
       const draggedItemIndex = updatedTodoItems.findIndex(
         (item) => item.id === draggedItemId
       );
+      console.log("Dragged Item Id:", draggedItemId);
+      console.log("Updated Todo Items:", updatedTodoItems);
+
+      // Log the id values of items in the array
+      console.log(
+        "Item IDs:",
+        updatedTodoItems.map((item) => item.id)
+      );
       if (draggedItemIndex === -1) {
         console.error("Dragged item not found in the current order.");
         return;
       }
 
-      const draggedItem = updatedTodoItems.splice(draggedItemIndex, 1)[0];
+      const draggedItem = updatedTodoItems[draggedItemIndex];
+      updatedTodoItems.splice(draggedItemIndex, 1);
+
       updatedTodoItems.splice(dropIndex, 0, draggedItem);
+
       setTodoItems(updatedTodoItems);
 
       // Prepare the new order to send to the server
