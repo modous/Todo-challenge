@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import styles from "./index.module.css";
 import { TodoItem } from "../todo-item/TodoItem";
 import React from "react";
-import { useDrag } from "react-dnd";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { useDrop } from "react-dnd";
 
 interface ListProps {
   data: ITodoItem[];
@@ -27,22 +28,25 @@ export default function TodoList({
   }
 
   return (
-    <ul className={styles.ulContainer}>
-      {data.map((item, index) => (
-        <li className={styles.listItemContainer} key={item.id}>
-          <TodoItem
-            onCompletedChange={(completed: boolean) =>
-              onTodoChange(item.id, { ...item, completed })
-            }
-            onDelete={() => onDeleteTodo(item.id)}
-            completed={item.completed}
-            title={item.title}
-            onTitleChange={(title: string) =>
-              onTodoChange(item.id, { ...item, title })
-            }
-          />
-        </li>
-      ))}
-    </ul>
+    <DndProvider backend={HTML5Backend}>
+      <ul className={styles.ulContainer}>
+        {data.map((item) => (
+          <li className={styles.listItemContainer} key={item.id}>
+            <TodoItem
+              id={item.id}
+              onCompletedChange={(id: number, completed: boolean) =>
+                onTodoChange(id, { ...item, completed })
+              }
+              onDelete={(id: number) => onDeleteTodo(id)}
+              completed={item.completed}
+              title={item.title}
+              onTitleChange={(id: number, title: string) =>
+                onTodoChange(id, { ...item, title })
+              }
+            />
+          </li>
+        ))}
+      </ul>
+    </DndProvider>
   );
 }

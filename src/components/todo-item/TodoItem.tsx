@@ -6,16 +6,19 @@ import { Checkbox } from "../checkbox";
 import classnames from "classnames";
 import { HiMiniTrash } from "react-icons/hi2";
 import { Button } from "../button";
+import { useDrag, useDrop } from "react-dnd";
 
 interface ITodoItemProps {
+  id: number;
   completed: boolean;
   title: string;
-  onTitleChange: (text: string) => void;
-  onCompletedChange: (completed: boolean) => void;
-  onDelete: () => void;
+  onTitleChange: (id: number, text: string) => void;
+  onCompletedChange: (id: number, completed: boolean) => void;
+  onDelete: (id: number) => void;
 }
 
 export function TodoItem({
+  id,
   completed,
   title,
   onDelete,
@@ -32,7 +35,7 @@ export function TodoItem({
 
   // Function to handle saving edited text
   const handleSave = () => {
-    onTitleChange(editTitle);
+    onTitleChange(id, editTitle);
     setIsEditing(false);
   };
 
@@ -55,14 +58,30 @@ export function TodoItem({
     setIsEditing(true);
   };
 
+  const [{ isDragging }, drag] = useDrag(
+    () => ({
+      type: "TODO_ITEM",
+      item: { id, title },
+      collect: (monitor) => ({
+        isDragging: !!monitor.isDragging(),
+      }),
+    }),
+    [title]
+  );
+
   return (
     <div
       className={classnames(styles.container, {
         [styles.isEditing]: isEditing,
         [styles.onEdit]: isEditing,
+        [styles.dragging]: isDragging,
       })}
+      ref={drag}
     >
-      <Checkbox checked={completed} onCheckedChange={onCompletedChange} />
+      <Checkbox
+        checked={completed}
+        onCheckedChange={(checked) => onCompletedChange(id, checked)}
+      />
       {isEditing ? (
         <input
           autoFocus
@@ -93,7 +112,7 @@ export function TodoItem({
         size="sm"
         variant="secondary"
         icon={<HiMiniTrash />}
-        onClick={onDelete}
+        onClick={() => onDelete(id)}
       />
     </div>
   );
