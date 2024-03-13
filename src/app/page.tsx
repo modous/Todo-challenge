@@ -4,13 +4,10 @@ import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import TodoList from "../components/todo-list/TodoList";
 import { AddTodoForm } from "@/components/add-todo-form";
-import { DropTarget } from "@/components/todo-list/DropTarget";
 import { getData, addData, updateData, deleteData, dropData } from "../api";
-
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
- 
 
   useEffect(() => {
     loadData();

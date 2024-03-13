@@ -11,5 +11,16 @@
 }
 
 .emptyState {
-  color: gray;
+  color: rgba(153, 153, 153, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px;
+}
+
+.loadingState {
+  padding: 120px;
+  margin: auto;
+  display: block;
+  border: 3px;
 }
