@@ -20,3 +20,11 @@
   line-height: var(--font-height);
   text-align: center;
 }
+
+.loadingState {
+  padding: 120px;
+  margin: auto;
+  display: block;
+  border: 3px;
+  width: 32px;
+}
