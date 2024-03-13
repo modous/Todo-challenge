@@ -2,22 +2,23 @@
 
 import styles from "./index.module.css";
 import { TodoItem } from "../todo-item/TodoItem";
-import React from "react";
+import React, { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { useDrop } from "react-dnd";
 import { DropTarget } from "./DropTarget";
 
 interface ListProps {
   data: ITodoItem[];
   onTodoChange: (id: number, state: ITodoItem) => void;
   onDeleteTodo: (id: number) => void;
+  onMoveTodo: (dropTargetId: number, dragItemId: number) => void;
 }
 
 export default function TodoList({
   data,
   onTodoChange,
   onDeleteTodo,
+  onMoveTodo,
 }: ListProps) {
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
   if (data.length === 0) {
@@ -27,15 +28,15 @@ export default function TodoList({
       </div>
     );
   }
-  const handleDrop = (dropTargetId: number, dragItemId: number) => {
-    console.log("drop:", dropTargetId, dragItemId);
-  };
+
   return (
     <DndProvider backend={HTML5Backend}>
       <ul className={styles.ulContainer}>
         {data.map((item) => (
           <li className={styles.listItemContainer} key={item.id}>
-            <DropTarget>
+            <DropTarget
+              onDrop={(dragItemId: number) => onMoveTodo(item.id, dragItemId)}
+            >
               <TodoItem
                 id={item.id}
                 onCompletedChange={(id: number, completed: boolean) =>

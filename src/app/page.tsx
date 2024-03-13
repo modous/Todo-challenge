@@ -4,96 +4,39 @@ import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import TodoList from "../components/todo-list/TodoList";
 import { AddTodoForm } from "@/components/add-todo-form";
+import { DropTarget } from "@/components/todo-list/DropTarget";
+import { getData, addData, updateData, deleteData, dropData } from "../api";
 
-const API_URL = "https://65c53ee5dae2304e92e41ae7.mockapi.io/api/todos/";
-
-async function getData() {
-  const result = await fetch(API_URL);
-
-  if (!result.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return result.json();
-}
-
-async function addData(data: IAddTodoItemData) {
-  try {
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to add data");
-    }
-
-    const result = await response.json();
-
-    return result;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
-  }
-}
-
-async function updateData(todoID: number, data: ITodoItem) {
-  try {
-    const response = await fetch(API_URL + `${todoID}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await response.json();
-
-    return result;
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
-
-async function deleteData(todoID: number) {
-  try {
-    const response = await fetch(API_URL + `${todoID}`, {
-      method: "Delete",
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to remove data");
-    }
-
-    const result = await response.json();
-
-    return result;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
-  }
-}
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
+ 
 
   useEffect(() => {
     loadData();
   }, []);
 
   const loadData = async () => {
-    const data = await getData();
-    setTodos(data);
+    try {
+      const data = await getData();
+      setTodos(data);
+    } catch (error) {
+      console.error("Failed to fetch todo items:", error);
+    }
   };
 
   const handleTodoChange = async (id: number, state: ITodoItem) => {
     if (state.title.trim() === "") {
       return;
     }
-    const newData = await updateData(id, state);
-
-    setTodos((todos) => todos.map((todo) => (todo.id === id ? newData : todo)));
+    try {
+      const newData = await updateData(id, state);
+      setTodos((todos) =>
+        todos.map((todo) => (todo.id === id ? newData : todo))
+      );
+    } catch (error) {
+      console.error("Failed to update todo:", error);
+    }
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
@@ -123,6 +66,13 @@ export default function Home() {
     }
   };
 
+  const handleMoveTodo = (dropTargetId: number, dragItemId: number) => {
+    const fromIndex = todos.findIndex((todo) => todo.id === dragItemId);
+    const toIndex = todos.findIndex((todo) => todo.id === dropTargetId);
+    const newTodos = [...todos];
+    newTodos.splice(toIndex, 0, newTodos.splice(fromIndex, 1)[0]);
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.todoSection}>
@@ -130,6 +80,7 @@ export default function Home() {
         <AddTodoForm onAddTodo={handleAddTodo} />
         <TodoList
           data={todos}
+          onMoveTodo={handleMoveTodo}
           onTodoChange={handleTodoChange}
           onDeleteTodo={handleDeleteTodo}
         />
