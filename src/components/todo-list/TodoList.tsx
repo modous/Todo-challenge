@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import { TodoItem } from "../todo-item/TodoItem";
 
@@ -10,18 +10,10 @@ interface ListProps {
   onDeleteTodo: (id: number) => void;
 }
 
-export default function TodoList({
-  data,
-  onTodoChange,
-  onDeleteTodo,
-}: ListProps) {
+export function TodoList({ data, onTodoChange, onDeleteTodo }: ListProps) {
   //This is the Empty state. If the array that i get from the Api is empty i return a paragraph
   if (data.length === 0) {
-    return (
-      <div className={styles.emptyState}>
-        <p>Create your first todo</p>
-      </div>
-    );
+    return <p className={styles.emptyState}>Create your first todo</p>;
   }
 
   return (
