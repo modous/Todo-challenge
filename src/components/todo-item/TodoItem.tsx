@@ -44,6 +44,7 @@ export function TodoItem({
       handleCancel();
     }
   };
+  
 
   const handleCancel = () => {
     setEditTitle(title);
