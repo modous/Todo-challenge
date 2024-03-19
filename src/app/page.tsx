@@ -50,11 +50,16 @@ export default function Home() {
   };
 
   const handleDeleteTodo = async (todoID: number) => {
+    const deletedTodo = todos.find((todo) => todo.id === todoID);
+    if (!deletedTodo) return;
+
+    setTodos(todos.filter((todo) => todo.id !== todoID));
+
     try {
       await deleteData(todoID);
-      setTodos(todos.filter((todo) => todo.id !== todoID));
     } catch (error) {
       console.error("Failed to delete todo:", error);
+      setTodos((prevTodos) => [...prevTodos, deletedTodo]);
     }
   };
 
