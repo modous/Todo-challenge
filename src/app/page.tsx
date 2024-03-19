@@ -23,6 +23,7 @@ export default function Home() {
   };
 
   const handleTodoChange = async (id: number, state: ITodoItem) => {
+    const prevTodos = [...todos];
     if (state.title.trim() === "") {
       return;
     }
@@ -38,10 +39,7 @@ export default function Home() {
       await updateData(id, state);
     } catch (error) {
       console.error("Failed to update todo:", error);
-      // Revert UI changes on failure
-      setTodos((prevTodos) =>
-        prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
-      );
+      setTodos(prevTodos);
     }
   };
 
