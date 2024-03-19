@@ -46,24 +46,34 @@ export default function Home() {
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
-    if (todo.title.trim() === "") {
-      return;
-    }
-
+    const prevTodos = [...todos];
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
       completed: false,
     };
 
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { id: -1, createdAt: "", ...newTodoData },
+    ]);
+
+    if (todo.title.trim() === "") {
+      return;
+    }
+
     try {
-      const response = await addData(newTodoData);
-      setTodos([...todos, response]);
+      const addedTodo = await addData(newTodoData);
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) => (todo.id === -1 ? { ...addedTodo } : todo))
+      );
     } catch (error) {
       console.error("Failed to add new todo:", error);
+      setTodos(prevTodos);
     }
   };
 
   const handleDeleteTodo = async (todoID: number) => {
+    const prevTodos = [...todos];
     const deletedTodo = todos.find((todo) => todo.id === todoID);
     if (!deletedTodo) return;
 
@@ -73,7 +83,8 @@ export default function Home() {
       await deleteData(todoID);
     } catch (error) {
       console.error("Failed to delete todo:", error);
-      setTodos((prevTodos) => [...prevTodos, deletedTodo]);
+      window.alert("Failed to delete todo. Please try again later.");
+      setTodos(prevTodos);
     }
   };
 
