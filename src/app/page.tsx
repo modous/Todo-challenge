@@ -26,9 +26,23 @@ export default function Home() {
     if (state.title.trim() === "") {
       return;
     }
-    const newData = await updateData(id, state);
 
-    setTodos((todos) => todos.map((todo) => (todo.id === id ? newData : todo)));
+    const updatedTodo = todos.find((todo) => todo.id === id);
+    if (!updatedTodo) return;
+
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => (todo.id === id ? { ...todo, ...state } : todo))
+    );
+
+    try {
+      await updateData(id, state);
+    } catch (error) {
+      console.error("Failed to update todo:", error);
+      // Revert UI changes on failure
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
+      );
+    }
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
