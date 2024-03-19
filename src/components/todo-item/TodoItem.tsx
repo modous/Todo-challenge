@@ -62,7 +62,11 @@ export function TodoItem({
         [styles.onEdit]: isEditing,
       })}
     >
-      <Checkbox checked={completed} onCheckedChange={onCompletedChange} />
+      <Checkbox
+        checked={completed}
+        onCheckedChange={onCompletedChange}
+        aria-label="Checkbox"
+      />
       {isEditing ? (
         <input
           autoFocus
