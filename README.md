@@ -1,6 +1,7 @@
 # Todo-challenge
 Maak een takenbeheersysteem waar de gebruiker taken kan toevoegen, bewerken, voltooien en verwijderen. Het moet ook de taken weergeven die de gebruiker heeft toegevoegd.
 
+<img width="1438" alt="image" src="https://github.com/modous/Todo-challenge/assets/34092733/2513bb3c-52ed-4c40-8e59-8e41c97c7a10">
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
