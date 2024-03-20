@@ -28,9 +28,6 @@ export default function Home() {
       return;
     }
 
-    const updatedTodo = todos.find((todo) => todo.id === id);
-    if (!updatedTodo) return;
-
     setTodos((prevTodos) =>
       prevTodos.map((todo) => (todo.id === id ? { ...todo, ...state } : todo))
     );
