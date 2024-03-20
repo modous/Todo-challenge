@@ -7,6 +7,7 @@ import { AddTodoForm } from "@/components/add-todo-form";
 import * as api from "../api";
 import { Loader } from "@/components/loader";
 import { updateTodos } from "@/utils/update-todos";
+import { deleteTodo } from "@/utils/delete-todo";
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
@@ -53,7 +54,7 @@ export default function Home() {
   const handleDeleteTodo = async (todoID: number) => {
     try {
       await api.deleteData(todoID);
-      setTodos(todos.filter((todo) => todo.id !== todoID));
+      setTodos((todos) => deleteTodo(todos, todoID));
     } catch (error) {
       console.error("Failed to delete todo:", error);
     }
