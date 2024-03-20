@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import { TodoList } from "../components/todo-list";
 import { AddTodoForm } from "@/components/add-todo-form";
-import { getData, addData, updateData, deleteData } from "../api";
+import * as api from "../api";
 import { Loader } from "@/components/loader";
+import { updateTodos } from "@/utils/update-todos";
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
@@ -17,7 +18,7 @@ export default function Home() {
 
   const loadData = async () => {
     setLoading(true);
-    const data = await getData();
+    const data = await api.getData();
     setTodos(data);
     setLoading(false);
   };
@@ -26,9 +27,9 @@ export default function Home() {
     if (state.title.trim() === "") {
       return;
     }
-    const newData = await updateData(id, state);
+    const newData = await api.updateData(id, state);
 
-    setTodos((todos) => todos.map((todo) => (todo.id === id ? newData : todo)));
+    setTodos((todos) => updateTodos(todos, id, newData));
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
@@ -42,7 +43,7 @@ export default function Home() {
     };
 
     try {
-      const response = await addData(newTodoData);
+      const response = await api.addData(newTodoData);
       setTodos([...todos, response]);
     } catch (error) {
       console.error("Failed to add new todo:", error);
@@ -51,7 +52,7 @@ export default function Home() {
 
   const handleDeleteTodo = async (todoID: number) => {
     try {
-      await deleteData(todoID);
+      await api.deleteData(todoID);
       setTodos(todos.filter((todo) => todo.id !== todoID));
     } catch (error) {
       console.error("Failed to delete todo:", error);
