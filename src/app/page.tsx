@@ -45,7 +45,7 @@ export default function Home() {
 
     try {
       const response = await api.addData(newTodoData);
-      setTodos([...todos, response]);
+      setTodos((todos) => addTodo(todos, response));
     } catch (error) {
       console.error("Failed to add new todo:", error);
     }
