@@ -35,8 +35,8 @@ export default function Home() {
     try {
       await updateData(id, state);
     } catch (error) {
-      console.error("Failed to update todo:", error);
       setTodos(prevTodos);
+      throw Error("failed to update todo");
     }
   };
 
@@ -62,8 +62,8 @@ export default function Home() {
         prevTodos.map((todo) => (todo.id === -1 ? { ...addedTodo } : todo))
       );
     } catch (error) {
-      console.error("Failed to add new todo:", error);
       setTodos(prevTodos);
+      throw Error("Failed to add new todo");
     }
   };
 
@@ -77,7 +77,6 @@ export default function Home() {
     try {
       await deleteData(todoID);
     } catch (error) {
-      console.error("Failed to delete todo:", error);
       window.alert("Failed to delete todo. Please try again later.");
       setTodos(prevTodos);
     }
