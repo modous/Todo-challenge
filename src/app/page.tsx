@@ -8,6 +8,7 @@ import * as api from "../api";
 import { Loader } from "@/components/loader";
 import { updateTodos } from "@/utils/update-todos";
 import { deleteTodo } from "@/utils/delete-todo";
+import { addTodo } from "@/utils/add-todo";
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
