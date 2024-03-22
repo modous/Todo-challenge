@@ -35,9 +35,9 @@ export default function Home() {
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
-    if (todo.title.trim() === "") {
-      return;
-    }
+    // if (todo.title.trim() === "") {
+    //   return;
+    // }
 
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
@@ -48,7 +48,7 @@ export default function Home() {
       const response = await api.addData(newTodoData);
       setTodos((todos) => addTodo(todos, response));
     } catch (error) {
-      console.error("Failed to add new todo:", error);
+      window.alert("Failed to add new todo:");
     }
   };
 
