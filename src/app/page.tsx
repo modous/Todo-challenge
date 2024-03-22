@@ -36,7 +36,7 @@ export default function Home() {
       await updateData(id, state);
     } catch (error) {
       setTodos(prevTodos);
-      throw Error("failed to update todo");
+      window.alert("failed to update todo");
     }
   };
 
@@ -63,7 +63,7 @@ export default function Home() {
       );
     } catch (error) {
       setTodos(prevTodos);
-      throw Error("Failed to add new todo");
+      window.alert("Failed to add new todo");
     }
   };
 
