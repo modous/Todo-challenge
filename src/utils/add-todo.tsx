@@ -3,10 +3,6 @@ export function addTodo(todos: ITodoItem[], newTodo: ITodoItem) {
     throw Error("please provide a title");
   }
 
-  if (!newTodo.id) {
-    throw Error(`could not add todo with wrong ID`);
-  }
-
   const newTodos = [...todos];
 
   newTodos.push(newTodo);
