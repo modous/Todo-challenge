@@ -67,7 +67,7 @@ export default function Home() {
       );
     } catch (error) {
       setTodos(prevTodos);
-      setTitleError(true);
+      throw Error("Something went wrong");
     }
   };
 
