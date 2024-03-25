@@ -35,10 +35,6 @@ export default function Home() {
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
-    // if (todo.title.trim() === "") {
-    //   return;
-    // }
-
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
       completed: false,
