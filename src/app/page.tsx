@@ -10,7 +10,6 @@ import { Loader } from "@/components/loader";
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [titleError, setTitleError] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -42,13 +41,9 @@ export default function Home() {
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
     if (todo.title.trim() === "") {
-      setTitleError(true);
-      console.log("HIHIHIHI", titleError);
       return;
-    } else {
-      setTitleError(false);
-      console.log("HIHIHIHI", titleError);
     }
+
     const prevTodos = [...todos];
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
@@ -88,9 +83,7 @@ export default function Home() {
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
-        {titleError && <h1 className={styles.error}>Please insert a title</h1>}
         <AddTodoForm onAddTodo={handleAddTodo} />
-
         {loading ? (
           <Loader />
         ) : (

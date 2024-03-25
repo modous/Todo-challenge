@@ -39,21 +39,27 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
   };
 
   return (
-    <form className={styles.inputAndButtonContainer} onSubmit={handleSubmit}>
-      <Input
-        placeholder="Add new to do"
-        value={newTodoTitle}
-        onChange={handleInputChange}
-        variant={titleError ? "error" : ""}
-      />
-      <Button
-        type="submit"
-        className={styles.addButton}
-        variant="primary"
-        size="lg"
-      >
-        Add
-      </Button>
+    <form onSubmit={handleSubmit}>
+      {titleError && (
+        <h1 className={styles.errorMessage}>Please insert a title</h1>
+      )}
+      <div className={styles.inputAndButtonContainer}>
+        <Input
+          placeholder="Add new to do"
+          value={newTodoTitle}
+          onChange={handleInputChange}
+          variant={titleError ? "error" : ""}
+        />
+
+        <Button
+          type="submit"
+          className={styles.addButton}
+          variant="primary"
+          size="lg"
+        >
+          Add
+        </Button>
+      </div>
     </form>
   );
 }

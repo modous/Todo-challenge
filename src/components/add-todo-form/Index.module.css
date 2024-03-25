@@ -7,3 +7,15 @@
   height: 40px;
   margin-left: 10px;
 }
+
+.errorMessage {
+  display: flex;
+  color: red;
+  margin-bottom: 5px;
+  margin-left: 16px;
+}
+
+.inp {
+  display: flex;
+  flex-direction: column;
+}
