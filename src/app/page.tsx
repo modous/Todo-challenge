@@ -41,12 +41,14 @@ export default function Home() {
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
-    // if (todo.title.trim() === "") {
-    //   setTitleError(true);
-    //   return;
-    // } else {
-    //   setTitleError(false);
-    // }
+    if (todo.title.trim() === "") {
+      setTitleError(true);
+      console.log("HIHIHIHI", titleError);
+      return;
+    } else {
+      setTitleError(false);
+      console.log("HIHIHIHI", titleError);
+    }
     const prevTodos = [...todos];
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
