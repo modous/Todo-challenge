@@ -1,9 +1,13 @@
 .inputAndButtonContainer {
-    display: flex;
-  }
-  
-  .addButton {
-    width: 60px;
-    height: 40px;
-    margin-left: 10px;
-  }
+  display: flex;
+}
+
+.addButton {
+  width: 60px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.errorInput {
+  border: 1px solid red;
+}

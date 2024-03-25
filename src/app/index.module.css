@@ -21,4 +21,8 @@
   text-align: center;
 }
 
-
+.error {
+  color: red;
+  font-size: 14px;
+  padding-bottom: 10px;
+}

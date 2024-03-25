@@ -10,6 +10,7 @@ import { Loader } from "@/components/loader";
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [titleError, setTitleError] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -36,34 +37,35 @@ export default function Home() {
       await updateData(id, state);
     } catch (error) {
       setTodos(prevTodos);
-      window.alert("failed to update todo");
     }
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
+    if (todo.title.trim() === "") {
+      setTitleError(true);
+      return;
+    } else {
+      setTitleError(false);
+    }
     const prevTodos = [...todos];
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
       completed: false,
     };
-
-    if (todo.title.trim() === "") {
-      return window.alert("Please insert a title");
-    }
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { id: -1, createdAt: "", ...newTodoData },
+    ]);
 
     try {
       const addedTodo = await addData(newTodoData);
-      setTodos((prevTodos) => [
-        ...prevTodos,
-        { id: -1, createdAt: "", ...newTodoData },
-      ]);
 
       setTodos((prevTodos) =>
         prevTodos.map((todo) => (todo.id === -1 ? { ...addedTodo } : todo))
       );
     } catch (error) {
       setTodos(prevTodos);
-      window.alert("Failed to add new todo");
+      setTitleError(true);
     }
   };
 
@@ -84,7 +86,9 @@ export default function Home() {
     <main className={styles.main}>
       <section className={styles.todoSection}>
         <h1 className={styles.title}>Todo list</h1>
+        {titleError && <h1 className={styles.error}>Please insert a title</h1>}
         <AddTodoForm onAddTodo={handleAddTodo} />
+
         {loading ? (
           <Loader />
         ) : (
