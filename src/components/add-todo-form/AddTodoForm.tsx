@@ -9,9 +9,11 @@ interface IAddTodoFormProps {
 
 export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
   const [newTodoTitle, setNewTodoTitle] = useState("");
+  const [titleError, setTitleError] = useState(false);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTodoTitle(event.target.value);
+    setTitleError(false);
   };
 
   const resetInput = () => {
@@ -20,7 +22,12 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    if (newTodoTitle.trim() === "") {
+      setTitleError(true);
+      return;
+    } else {
+      setTitleError(false);
+    }
     const newTodoData: IAddTodoItemData = {
       title: newTodoTitle,
       completed: false,
@@ -37,6 +44,7 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
         placeholder="Add new to do"
         value={newTodoTitle}
         onChange={handleInputChange}
+        variant={titleError ? "error" : ""}
       />
       <Button
         type="submit"
