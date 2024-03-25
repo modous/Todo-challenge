@@ -40,10 +40,6 @@ export default function Home() {
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
-    if (todo.title.trim() === "") {
-      return;
-    }
-
     const prevTodos = [...todos];
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
@@ -62,7 +58,7 @@ export default function Home() {
       );
     } catch (error) {
       setTodos(prevTodos);
-      throw Error("Something went wrong");
+      throw Error("Could not add a todo");
     }
   };
 

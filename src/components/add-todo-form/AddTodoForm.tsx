@@ -25,9 +25,8 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
     if (newTodoTitle.trim() === "") {
       setTitleError(true);
       return;
-    } else {
-      setTitleError(false);
     }
+
     const newTodoData: IAddTodoItemData = {
       title: newTodoTitle,
       completed: false,
