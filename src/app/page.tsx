@@ -48,7 +48,7 @@ export default function Home() {
     };
 
     if (todo.title.trim() === "") {
-      return;
+      return window.alert("Please insert a title");
     }
 
     try {
@@ -57,6 +57,7 @@ export default function Home() {
         ...prevTodos,
         { id: -1, createdAt: "", ...newTodoData },
       ]);
+
       setTodos((prevTodos) =>
         prevTodos.map((todo) => (todo.id === -1 ? { ...addedTodo } : todo))
       );
