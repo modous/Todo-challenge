@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from "./Index.module.css";
+import styles from "./index.module.css";
 import { TodoList } from "../components/todo-list";
 import { AddTodoForm } from "@/components/add-todo-form";
 import { getData, addData, updateData, deleteData } from "../api";
