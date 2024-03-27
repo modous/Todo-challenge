@@ -1,7 +1,7 @@
 "use client";
 
 import classnames from "classnames";
-import styles from "./index.module.css";
+import styles from "./Index.module.css";
 import { ComponentProps } from "react";
 
 interface IButtonProps extends ComponentProps<"button"> {

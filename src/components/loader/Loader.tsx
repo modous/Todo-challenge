@@ -1,4 +1,4 @@
-import styles from "./index.module.css";
+import styles from "./Index.module.css";
 
 export function Loader() {
   return (

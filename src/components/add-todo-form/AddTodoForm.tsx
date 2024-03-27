@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Input } from "../input";
 import { Button } from "../button";
-import styles from "./index.module.css";
+import styles from "./Index.module.css";
 
 interface IAddTodoFormProps {
   onAddTodo: (todo: IAddTodoItemData) => void;
