@@ -1,5 +1,5 @@
 import { ComponentProps } from "react";
-import styles from "./index.module.css";
+import styles from "./Index.module.css";
 import classNames from "classnames";
 
 interface IInputProps extends Omit<ComponentProps<"input">, "type"> {
