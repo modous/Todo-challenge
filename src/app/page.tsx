@@ -23,38 +23,55 @@ export default function Home() {
   };
 
   const handleTodoChange = async (id: number, state: ITodoItem) => {
+    const prevTodos = [...todos];
     if (state.title.trim() === "") {
       return;
     }
-    const newData = await updateData(id, state);
 
-    setTodos((todos) => todos.map((todo) => (todo.id === id ? newData : todo)));
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => (todo.id === id ? { ...todo, ...state } : todo))
+    );
+
+    try {
+      await updateData(id, state);
+    } catch (error) {
+      setTodos(prevTodos);
+    }
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
-    if (todo.title.trim() === "") {
-      return;
-    }
-
+    const prevTodos = [...todos];
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
       completed: false,
     };
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { id: -1, createdAt: "", ...newTodoData },
+    ]);
 
     try {
-      const response = await addData(newTodoData);
-      setTodos([...todos, response]);
+      const addedTodo = await addData(newTodoData);
+
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) => (todo.id === -1 ? { ...addedTodo } : todo))
+      );
     } catch (error) {
-      console.error("Failed to add new todo:", error);
+      setTodos(prevTodos);
+      throw Error("Could not add a todo");
     }
   };
 
   const handleDeleteTodo = async (todoID: number) => {
+    const prevTodos = [...todos];
+
+    setTodos(todos.filter((todo) => todo.id !== todoID));
+
     try {
       await deleteData(todoID);
-      setTodos(todos.filter((todo) => todo.id !== todoID));
     } catch (error) {
-      console.error("Failed to delete todo:", error);
+      setTodos(prevTodos);
+      window.alert("Failed to delete todo. Please try again later.");
     }
   };
 
