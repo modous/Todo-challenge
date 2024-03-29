@@ -9,8 +9,8 @@ interface ICheckboxProps extends ComponentProps<"input"> {
 }
 
 export function Checkbox({
-  className,
   onChange,
+  className,
   onCheckedChange,
   ...props
 }: ICheckboxProps) {
