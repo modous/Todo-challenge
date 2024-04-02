@@ -17,3 +17,10 @@
   align-items: center;
   padding: 120px;
 }
+
+.error {
+  display: flex;
+  color: red;
+  margin-bottom: 10px;
+  margin-left: 16px;
+}

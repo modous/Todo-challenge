@@ -58,7 +58,6 @@ export default function Home() {
       );
     } catch (error) {
       setTodos(prevTodos);
-      throw Error("Could not add a todo");
     }
   };
 
@@ -71,7 +70,6 @@ export default function Home() {
       await deleteData(todoID);
     } catch (error) {
       setTodos(prevTodos);
-      window.alert("Failed to delete todo. Please try again later.");
     }
   };
 

@@ -18,6 +18,11 @@ export function TodoList({ data, onTodoChange, onDeleteTodo }: ListProps) {
 
   return (
     <ul className={styles.ulContainer}>
+      {!onDeleteTodo && (
+        <p className={styles.error}>
+          Failed to delete todo. Please try again later.
+        </p>
+      )}
       {data.map((item) => (
         <li className={styles.listItemContainer} key={item.id}>
           <TodoItem
