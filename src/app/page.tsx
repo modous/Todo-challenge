@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import { TodoList } from "../components/todo-list";
 import { AddTodoForm } from "@/components/add-todo-form";
-import { getData, addData, updateData, deleteData } from "../api";
+import * as api from "../api";
 import { Loader } from "@/components/loader";
+import { updateTodos } from "@/utils/update-todos";
+import { deleteTodo } from "@/utils/delete-todo";
+import { addTodo } from "@/utils/add-todo";
 
 export default function Home() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
@@ -17,7 +20,7 @@ export default function Home() {
 
   const loadData = async () => {
     setLoading(true);
-    const data = await getData();
+    const data = await api.getData();
     setTodos(data);
     setLoading(false);
   };
@@ -26,33 +29,29 @@ export default function Home() {
     if (state.title.trim() === "") {
       return;
     }
-    const newData = await updateData(id, state);
+    const newData = await api.updateData(id, state);
 
-    setTodos((todos) => todos.map((todo) => (todo.id === id ? newData : todo)));
+    setTodos((todos) => updateTodos(todos, id, newData));
   };
 
   const handleAddTodo = async (todo: IAddTodoItemData) => {
-    if (todo.title.trim() === "") {
-      return;
-    }
-
     const newTodoData: IAddTodoItemData = {
       title: todo.title,
       completed: false,
     };
 
     try {
-      const response = await addData(newTodoData);
-      setTodos([...todos, response]);
+      const response = await api.addData(newTodoData);
+      setTodos((todos) => addTodo(todos, response));
     } catch (error) {
-      console.error("Failed to add new todo:", error);
+      window.alert("Failed to add new todo:");
     }
   };
 
   const handleDeleteTodo = async (todoID: number) => {
     try {
-      await deleteData(todoID);
-      setTodos(todos.filter((todo) => todo.id !== todoID));
+      await api.deleteData(todoID);
+      setTodos((todos) => deleteTodo(todos, todoID));
     } catch (error) {
       console.error("Failed to delete todo:", error);
     }
