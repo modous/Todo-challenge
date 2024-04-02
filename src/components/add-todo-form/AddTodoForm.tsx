@@ -40,14 +40,14 @@ export function AddTodoForm({ onAddTodo }: IAddTodoFormProps) {
   return (
     <form onSubmit={handleSubmit}>
       {titleError && (
-        <h1 className={styles.errorMessage}>Please insert a title</h1>
+        <p className={styles.errorMessage}>Please insert a title</p>
       )}
       <div className={styles.inputAndButtonContainer}>
         <Input
           placeholder="Add new to do"
           value={newTodoTitle}
           onChange={handleInputChange}
-          variant={titleError ? "error" : ""}
+          error={titleError ? true : false}
         />
 
         <Button

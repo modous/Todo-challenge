@@ -4,16 +4,15 @@ import classNames from "classnames";
 
 interface IInputProps extends Omit<ComponentProps<"input">, "type"> {
   type?: "text" | "number" | "email" | "password" | "url";
-  variant?: "normal" | "error" | "";
+  error?: boolean;
 }
 
-export function Input({ type, variant = "normal", ...props }: IInputProps) {
+export function Input({ type, error, ...props }: IInputProps) {
   return (
     <input
       type={type}
       className={classNames(styles.input, {
-        [styles.input]: variant === "normal",
-        [styles.errorInput]: variant === "error",
+        [styles.error]: error,
       })}
       {...props}
     />
