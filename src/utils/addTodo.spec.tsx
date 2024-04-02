@@ -2,14 +2,14 @@ const { addTodo } = require("./add-todo");
 
 describe("test if add function works correctly", () => {
   test("add a todo at end of list", () => {
-    //maak een fake array met objecten er in
+    //make array with objects
     const prevTodos = [
       { id: 1, title: "Todo 1", completed: false },
       { id: 2, title: "Todo 2", completed: true },
     ];
 
     const newTodo = { id: 3, title: "Todo 3", completed: false };
-    //de test die de functie uitvoert en vergelijkt of de ID en completed klopt
+    //The test that renders the function and compares the ID and completed.
     expect(addTodo(prevTodos, newTodo)).toEqual([
       { id: 1, title: "Todo 1", completed: false },
       { id: 2, title: "Todo 2", completed: true },
